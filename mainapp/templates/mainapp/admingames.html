@@ -1,0 +1,13 @@
+{%extends 'mainapp/base.html'%}
+{% block title %}
+    <title>admin_games</title>
+{% endblock title %}
+{% block main %}
+    <form action="" method="GET">
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+    {% for game in games %}
+        <li><a href="">{{game}}</a></li>
+    {% endfor %}
+{% endblock main %}

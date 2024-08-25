@@ -1,0 +1,13 @@
+{%extends 'mainapp/base.html'%}
+{% block title %}
+    <title>admin_topic</title>
+{% endblock title %}
+{% block main %}
+    <form action="" method="GET">
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+    {% for item in topic %}
+        <li><a href="">{{item.name}}</a></li>
+    {% endfor %}
+{% endblock main %}

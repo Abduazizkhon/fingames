@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+    <title>Resources</title>
+{% endblock title %}
+{% block main %}
+    <h1>Resources</h1>
+    <form action="" method="GET">
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+    <ul>
+        {% for resource in resources %}
+            <li>
+                <h2>{{resource.title}}</h2>
+                <p>{{resource.desc}}</p>
+                <p>Download: <a href="{{ resource.file.url }}" download>Resource</a></p>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock main %}

@@ -1,0 +1,24 @@
+{%extends 'mainapp/base.html'%}
+{% block title %}
+    <title>admin</title>
+{% endblock title %}
+{% block main %}
+    <ul>
+        <li><a href="{% url 'admingames' %}">Game</a></li>
+        <li><a href="{% url 'admintopic' %}">Topic</a></li>
+        <li><a href="{% url 'admintype' %}">Type</a></li>
+        <li><a href="{% url 'adminfeedback' %}">Feedback</a></li>
+        <li><a href="{% url 'admincontact' %}">Contacts</a></li> 
+        <!-- doesnt work ^^^ -->
+        <li><a href="{% url 'adminprojectdescription' %}">Project Description</a></li>
+        <!-- doesnt work ^^^ -->
+        <li><a href="{% url 'adminresources' %}">Additional resources</a></li>
+        <!-- doesnt work ^^^ -->
+        <li><a href="{% url 'adminintro' %}">Main Intro Content</a></li>
+        <!-- doesnt work ^^^ -->
+    </ul>
+    
+{% endblock main %}
+
+<!-- sdelat searchbar dlya vseh adminskih stranic, i sdelat searchbar sorting sperva samoye novoye -->
+

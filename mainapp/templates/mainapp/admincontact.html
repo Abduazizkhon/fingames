@@ -1,0 +1,16 @@
+{%extends 'mainapp/base.html'%}
+{% block title %}
+    <title>admin_contact</title>
+{% endblock title %}
+{% block main %}
+    <form action="" method="GET">
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+   
+        <li><a href="">{{contact.email}}</a></li>
+        <li><a href="">{{contact.phone}}</a></li>
+        <li><a href="">{{contact.telegram}}</a></li>
+        <li><a href="">{{contact.address}}</a></li>
+
+{% endblock main %}

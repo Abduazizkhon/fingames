@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+    <title>About The Project</title>
+{% endblock title %}
+
+{% block main %}
+    <h1>About The Project</h1>
+    <h2>{{about.title}}</h2>
+    <p>{{about.content|safe}}</p>
+    <hr>
+    <h1>Contacts</h1>
+    <ul>
+        <li>{{contacts.phone}}</li>
+        <li>{{contacts.telegram}}</li>
+        <li>{{contacts.email}}</li>
+        <li>{{contacts.address}}</li>
+    </ul>
+{% endblock main %}

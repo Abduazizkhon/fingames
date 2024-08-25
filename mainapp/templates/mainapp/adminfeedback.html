@@ -1,0 +1,13 @@
+{%extends 'mainapp/base.html'%}
+{% block title %}
+    <title>admin_feedback</title>
+{% endblock title %}
+{% block main %}
+    <form action="" method="GET">
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+    {% for item in feedback %}
+        <li><a href="">{{item.email}}</a></li>
+    {% endfor %}
+{% endblock main %}
