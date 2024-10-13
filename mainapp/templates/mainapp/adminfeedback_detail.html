@@ -3,11 +3,29 @@
 <title>adminfeedback_detail</title>
 {% endblock title %}
 {% block main %}
-<h2>Information: </h2>
-<h4>Name:</h4>
-<li>{{feedback.email}}</li>
-<h4>Text:</h4>
-<li>{{feedback.text}}</li>
-<h4>Type:</h4>
-<li>{{feedback.type}}</li>
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+    <h2 style="text-align: center; color: #333;">Information:</h2>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="color: #007bff;">Name:</h4>
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="border: 1px solid #007bff; border-radius: 5px; background-color: #ffffff; padding: 10px; margin-bottom: 10px;">{{ feedback.email }}</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="color: #007bff;">Text:</h4>
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="border: 1px solid #007bff; border-radius: 5px; background-color: #ffffff; padding: 10px; margin-bottom: 10px;">{{ feedback.text }}</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="color: #007bff;">Type:</h4>
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="border: 1px solid #007bff; border-radius: 5px; background-color: #ffffff; padding: 10px; margin-bottom: 10px;">{{ feedback.type }}</li>
+        </ul>
+    </div>
+</div>
+
 {% endblock main %}

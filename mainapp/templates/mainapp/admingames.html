@@ -3,14 +3,32 @@
     <title>admin_games</title>
 {% endblock title %}
 {% block main %}
-    <a href="{% url 'admingames' %}">back</a>
-    <form action="" method="GET">
-        <input type="text" name="search">
-        <input type="submit">
-    </form>
-    <a href="{% url 'add_game' %}">New Game +</a>
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
 
-    {% for game in games %}
-        <li><a href="{% url 'admingame_detail' game.id %}">{{game}}</a></li>
-    {% endfor %}
+    <a href="{% url 'admingames' %}" style="display: inline-block; margin-bottom: 15px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
+        Back
+    </a>
+
+    <form action="" method="GET" style="margin-bottom: 20px;">
+        <input type="text" name="search" placeholder="Search games..." style="padding: 8px; width: 300px; border-radius: 5px; border: 1px solid #ccc;">
+        <input type="submit" value="Search" style="padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+    </form>
+
+    <a href="{% url 'add_game' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
+        New Game +
+    </a>
+
+    <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+        {% for game in games %}
+            <li>
+                <a href="{% url 'admingame_detail' game.id %}" style="display: block; padding: 10px 20px; background-color: #f8f9fa; color: #007bff; text-decoration: none; border: 1px solid #007bff; border-radius: 5px; transition: background-color 0.3s ease;">
+                    {{ game }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
 {% endblock main %}

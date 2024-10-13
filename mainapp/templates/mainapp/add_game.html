@@ -1,11 +1,23 @@
 {% extends 'mainapp/base.html' %}
 
 {% block main %}
-    <h2>Add New Game</h2>
-    <form method="post" enctype="multipart/form-data">
+<div style="max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+    <h2 style="text-align: center; color: #333;">Add New Game</h2>
+
+    <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Renders the form fields -->
-        <button type="submit">Add Game</button>
+        
+        <!-- Render the form fields with individual styling -->
+        {{ form.as_p }}
+
+        <button type="submit" style="background-color: #007bff; color: white; border: none; border-radius: 5px; padding: 10px; cursor: pointer; font-size: 16px;">
+            Add Game
+        </button>
     </form>
-    <a href="{% url 'admingames' %}">Cancel</a>  <!-- Link to go back to the list of games -->
+
+    <a href="{% url 'admingames' %}" style="display: block; text-align: center; margin-top: 20px; text-decoration: none; color: #007bff;">
+        Cancel
+    </a>
+</div>
+
 {% endblock %}

@@ -3,91 +3,125 @@
     <title>admingame_detail</title>
 {% endblock title %}
 {% block main %}
-<a href="{% url 'admingames' %}">Back to Games</a>
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    
+    <a href="{% url 'admingames' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
+        Back to Games
+    </a>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+    <form method="post" enctype="multipart/form-data" style="border: 1px solid #ccc; padding: 20px; border-radius: 10px;">
+        {% csrf_token %}
 
-    <label for="author">Author</label>
-    <input type="text" name="author" value="{{ game.author }}">
-<br>
-    <label for="desc">Description</label>
-    <textarea name="desc">{{ game.desc }}</textarea>
-<br>
-    <label for="name">Name</label>
-    <input type="text" name="name" value="{{ game.name }}" required>
-<br>
-    <label for="topic">Topic</label>
-    <select name="topic">
-        {% for topic in topics %}
-            <option value="{{ topic.id }}" {% if topic.id == game.topic.id %}selected{% endif %}>{{ topic.name }}</option>
-        {% endfor %}
-    </select>
-<br>
-    <label for="lowage">Lower Age</label>
-    <input type="number" name="lowage" value="{{ game.lowage }}">
-<br>
-    <label for="upage">Upper Age</label>
-    <input type="number" name="upage" value="{{ game.upage }}">
-<br>
-    <label for="playernum">Number of Players</label>
-    <textarea name="playernum">{{ game.playernum }}</textarea>
-<br>
-    <label for="time">Time (minutes)</label>
-    <input type="number" name="time" value="{{ game.time }}">
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="author" style="display: block; margin-bottom: 5px;">Author</label>
+            <input type="text" name="author" value="{{ game.author }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="format">Format</label>
-    <select name="format" required>
-        <option value="online" {% if game.format == 'online' %}selected{% endif %}>Online</option>
-        <option value="offline" {% if game.format == 'offline' %}selected{% endif %}>Offline</option>
-        <option value="blended" {% if game.format == 'blended' %}selected{% endif %}>Blended</option>
-    </select>
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="desc" style="display: block; margin-bottom: 5px;">Description</label>
+            <textarea name="desc" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.desc }}</textarea>
+        </div>
 
-    <label for="type">Type</label>
-    <select name="type">
-        {% for type in types %}
-            <option value="{{ type.id }}" {% if type.id == game.type.id %}selected{% endif %}>{{ type.name }}</option>
-        {% endfor %}
-    </select>
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
+            <input type="text" name="name" value="{{ game.name }}" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="rules">Rules</label>
-    <textarea name="rules">{{ game.rules }}</textarea>
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="topic" style="display: block; margin-bottom: 5px;">Topic</label>
+            <select name="topic" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                {% for topic in topics %}
+                    <option value="{{ topic.id }}" {% if topic.id == game.topic.id %}selected{% endif %}>{{ topic.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-    <label for="goal">Goal</label>
-    <textarea name="goal">{{ game.goal }}</textarea>
-    <br>
+        <div style="display: flex; gap: 20px;">
+            <div style="flex: 1; margin-bottom: 20px;">
+                <label for="lowage" style="display: block; margin-bottom: 5px;">Lower Age</label>
+                <input type="number" name="lowage" value="{{ game.lowage }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
 
-    <label for="target">Target</label>
-    <textarea name="target">{{ game.target }}</textarea>
-    <br>
+            <div style="flex: 1; margin-bottom: 20px;">
+                <label for="upage" style="display: block; margin-bottom: 5px;">Upper Age</label>
+                <input type="number" name="upage" value="{{ game.upage }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+        </div>
 
-    <label for="outcome">Outcome</label>
-    <textarea name="outcome">{{ game.outcome }}</textarea>
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="playernum" style="display: block; margin-bottom: 5px;">Number of Players</label>
+            <textarea name="playernum" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.playernum }}</textarea>
+        </div>
 
-    <label for="pic">Picture</label>
-    <input type="file" name="pic">
-    <br>
-    <img src="{{ game.pic.url }}" alt="" width="200" height="200">
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="time" style="display: block; margin-bottom: 5px;">Time (minutes)</label>
+            <input type="number" name="time" value="{{ game.time }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
 
-    <label for="file">File</label>
-    <input type="file" name="file">
-    <br>
-    <p>Download: <a href="{{ game.file.url }}" download>Game</a></p>
-    <br>
+        <div style="margin-bottom: 20px;">
+            <label for="format" style="display: block; margin-bottom: 5px;">Format</label>
+            <select name="format" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <option value="online" {% if game.format == 'online' %}selected{% endif %}>Online</option>
+                <option value="offline" {% if game.format == 'offline' %}selected{% endif %}>Offline</option>
+                <option value="blended" {% if game.format == 'blended' %}selected{% endif %}>Blended</option>
+            </select>
+        </div>
 
-    <button type="submit">Save</button>
-</form>
-<form action="{% url 'delete_game' game.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this game?');">
-    {% csrf_token %}
-    <input type="submit" value="DELETE">
+        <div style="margin-bottom: 20px;">
+            <label for="type" style="display: block; margin-bottom: 5px;">Type</label>
+            <select name="type" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                {% for type in types %}
+                    <option value="{{ type.id }}" {% if type.id == game.type.id %}selected{% endif %}>{{ type.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-</form>
+        <div style="margin-bottom: 20px;">
+            <label for="rules" style="display: block; margin-bottom: 5px;">Rules</label>
+            <textarea name="rules" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.rules }}</textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="goal" style="display: block; margin-bottom: 5px;">Goal</label>
+            <textarea name="goal" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.goal }}</textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="target" style="display: block; margin-bottom: 5px;">Target</label>
+            <textarea name="target" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.target }}</textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="outcome" style="display: block; margin-bottom: 5px;">Outcome</label>
+            <textarea name="outcome" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.outcome }}</textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="pic" style="display: block; margin-bottom: 5px;">Picture</label>
+            <input type="file" name="pic" style="width: 100%; padding: 10px;">
+            <br><br>
+            <img src="{{ game.pic.url }}" alt="" width="200" height="200" style="border: 1px solid #ccc; margin-top: 10px;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="file" style="display: block; margin-bottom: 5px;">File</label>
+            <input type="file" name="file" style="width: 100%; padding: 10px;">
+            <br><br>
+            <p>Download: <a href="{{ game.file.url }}" download style="color: #007bff;">Game</a></p>
+        </div>
+
+        <button type="submit" style="display: block; padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+            Save
+        </button>
+    </form>
+
+    <form action="{% url 'delete_game' game.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this game?');" style="margin-top: 20px;">
+        {% csrf_token %}
+        <input type="submit" value="DELETE" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+    </form>
+
+</div>
+
 
 
 
