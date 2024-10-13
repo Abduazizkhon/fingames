@@ -3,8 +3,61 @@
     <title>{{ game.name }}</title>
 {% endblock title %}
 {% block main %}
-    <h1>{{ game.name }}</h1>
+    <!-- <h1>{{ game.name }}</h1>
     <p>{{ game.desc }}</p>
     <p>Download: <a href="{{ game.file.url }}" download>Game</a></p>
-    <a href="{% url 'game_list' %}">Back to Games</a>
+    <a href="{% url 'game_list' %}">Back to Games</a> -->
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <!-- Game Name -->
+        <h1 style="font-size: 2.5em; color: #007bff; margin-bottom: 20px;">{{ game.name }}</h1>
+        
+        <!-- Game Image -->
+        <img src="{{ game.pic.url }}" alt="{{ game.name }}" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+    
+        <!-- Game Author -->
+        <p><strong>Author:</strong> {{ game.author }}</p>
+    
+        <!-- Game Description -->
+        <p><strong>Description:</strong> {{ game.desc }}</p>
+    
+        <!-- Game Topic -->
+        <p><strong>Topic:</strong> {{ game.topic }}</p>
+    
+        <!-- Age Range -->
+        <p><strong>Recommended Age:</strong> {{ game.lowage }} - {{ game.upage }} years</p>
+    
+        <!-- Number of Players -->
+        <p><strong>Number of Players:</strong> {{ game.playernum }}</p>
+    
+        <!-- Duration -->
+        <p><strong>Playing Time:</strong> {{ game.time }} minutes</p>
+    
+        <!-- Format -->
+        <p><strong>Format:</strong> {{ game.get_format_display }}</p>
+    
+        <!-- Game Type -->
+        <p><strong>Type:</strong> {{ game.type }}</p>
+    
+        <!-- Game Rules -->
+        <p><strong>Rules:</strong> {{ game.rules }}</p>
+    
+        <!-- Game Goal -->
+        <p><strong>Goal:</strong> {{ game.goal }}</p>
+    
+        <!-- Target Audience -->
+        <p><strong>Target Audience:</strong> {{ game.target }}</p>
+    
+        <!-- Outcome -->
+        <p><strong>Expected Outcome:</strong> {{ game.outcome }}</p>
+    
+        <!-- Download Button -->
+        <p>Download: <a href="{{ game.file.url }}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download Game</a></p>
+
+        <!-- Download count -->
+        <p><strong>Statistics:</strong> {{ game.download_count }}</p>
+    
+        <!-- Back to Games Button -->
+        <a href="{% url 'game_list' %}" style="color: #007bff; text-decoration: none; border: 1px solid #007bff; padding: 10px 15px; border-radius: 5px; display: inline-block;">Back to Games</a>
+    </div>
+    
 {% endblock main %}

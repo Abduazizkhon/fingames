@@ -21,9 +21,15 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block title %}
 
     {% endblock title %}
+    <style>
+         html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid bg-dark">
@@ -40,6 +46,9 @@
                     <a class="text-white px-2" href="https://web.telegram.org/k/#@Abduazizkhon">
                         <i class="fa fa-telegram"></i>
                     </a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout'%}">logout</a>
+                    {% endif %}
 
                 </div>
             </div>
@@ -47,8 +56,8 @@
     </div>
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
-                <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>Edukate</h1>
+            <a href="{% url 'main' %}" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>TDIU</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -70,24 +79,96 @@
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         </div> -->
                     <!-- </div> -->
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
+                {% if not user.is_staff %}
+                    <a href="#section1" class="btn btn-primary py-2 px-4 d-none d-lg-block" >
+                        Feedback
+                    </a>
+                {% else %}
+                    <a href="{% url 'admin' %}" class="btn btn-primary py-2 px-4 d-none d-lg-block" >
+                        admin
+                    </a>
+                {% endif %}
+                    
+
             </div>
         </nav>
     </div>
     {% block main %}
         
     {% endblock main %}
-    <footer>
-        <form method="POST" action="">
-            {% csrf_token %}
-                <h3>email</h3>
-                <input type="text" name="login">
-                <h3>Feedback:</h3>
-                <textarea name="" id=""></textarea>
-                <input type="submit" value="Submit">
-        </form>
-    </footer>
+    <!-- Footer Start -->
+<div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+    <div class="container mt-5 pt-5">
+        <div class="d-flex justify-content-between" style="flex-wrap: wrap;">
+            <div class="col-md-6 mb-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>TDIU</h1>
+                </a>
+                <p class="m-0">Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita diam</p>
+            </div>
+            <footer>
+                {% if not user.is_staff %}
+                <form method="POST" action="{% url 'feedback' %}" id="section1" class="d-block" style="max-width: 600px; margin: 0 auto; background-color: #120F2D ; padding: 20px; border-radius: 10px;">
+                    {% csrf_token %}
+                    
+                    <h3 style="color: white; font-size: 24px; margin-bottom: 15px; text-align: left;">Email</h3>
+                    <input type="email" name="email" placeholder="Your Email Address" 
+                           style="width: 100%; padding: 15px; margin-bottom: 15px; font-size: 16px; color: #6C757D; border: 1px solid #ccc; border-radius: 5px; outline: none;">
+                
+                    <select name="status" id="" 
+                            style="width: 100%; padding: 15px; margin-bottom: 15px; font-size: 16px; color: #6C757D; border: 1px solid #ccc; border-radius: 5px; outline: none; background-color: white; appearance: none;">
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                        <option value="other">Other</option>
+                    </select>
+                    
+                    <h3 style="color: white; font-size: 24px; margin-bottom: 15px; text-align: left;">Feedback:</h3>
+                    <textarea name="content" id="" placeholder="Your Feedback" class="d-block"
+                              style="width: 100%; height: 100px; padding: 15px; margin-bottom: 15px; font-size: 16px; color: #6C757D; border: 1px solid #ccc; border-radius: 5px; outline: none; resize: vertical;"></textarea>
+                
+                    <input type="submit" value="Submit" 
+                           style="width: 100%; padding: 15px; background-color: #2878EB; color: white; font-size: 16px; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; transition: background-color 300ms ease, transform 300ms ease;">
+                
+                </form>
+                
+                {% endif %}
+            </footer>
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <p class="m-0">Designed by:  <a class="text-white" href="#">Abduazizkhon Shomansurov</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+ 
 </body>
 </html>

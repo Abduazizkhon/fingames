@@ -1,0 +1,99 @@
+* {
+    text-decoration: none;
+margin: 0;
+padding: 0;
+}
+
+a:hover {
+    text-decoration: none;
+
+}
+.courses_box{
+    max-width:  1140px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap !important;
+}
+.courses_cards_item, .courses_cards_item h3 {
+    padding: 10px;
+    max-width: 250px;
+    margin: 10px;
+    width: 100%;
+    background: #2878EB;
+    border-radius: 20px;
+    color: white;
+}
+.courses_cards_item h3{
+    padding: 0;
+    padding-top: 10px;
+    margin: 0;
+}
+.courses_cards_item img{
+    display: block;
+    height: 120px;
+    width: 100%;
+    object-fit: cover;
+    /* object-fit: contain; */
+    overflow: hidden;
+    border-radius: 20px;
+}
+.courses_cards_item ul {
+    margin: 0;
+    padding: 10px;
+
+}
+.courses_item_btn{
+    display: block;
+    margin: 0 auto;
+    max-width: 100px;
+    width: 1000%;
+    background: white;
+    border-radius: 20px;
+    color: #2878EB;
+    text-align: center;
+}
+
+.courses_btn{
+    display: block;
+    background-color: #2878EB;
+    max-width: 200px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    color: white;
+    border-radius: 20px;
+    margin-top: 30px ;
+    margin-bottom: 30px;
+    transition: 300ms;
+}
+.courses_btn:hover {
+    background: white;
+    color: #2878EB;
+    border: 1px solid black;
+    text-decoration: none;
+}
+.intro_btn {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    background-color: white;
+    color: #2878EB;
+    border-radius: 20px;
+    padding: 20px 0;
+    text-align: center; /* Center the text */
+    font-size: 16px; /* Adjust font size for better readability */
+    font-weight: bold; /* Make the text bold */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    cursor: pointer; /* Change cursor to pointer */
+}
+.intro_btn:hover {
+    background-color: lightgreen;
+    transform: scale(1.05); /* Slightly scale up the button */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance the shadow on hover */
+}
+
+/* ------------Game.html------------- */

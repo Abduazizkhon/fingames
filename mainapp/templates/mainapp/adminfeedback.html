@@ -3,11 +3,13 @@
     <title>admin_feedback</title>
 {% endblock title %}
 {% block main %}
+<a href="{% url 'adminfeedback' %}">back</a>
+
     <form action="" method="GET">
         <input type="text" name="search">
         <input type="submit">
     </form>
     {% for item in feedback %}
-        <li><a href="">{{item.email}}</a></li>
+        <li><a href="{% url 'adminfeedback_detail' item.id %}">{{item.email}}</a></li>
     {% endfor %}
 {% endblock main %}

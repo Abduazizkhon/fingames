@@ -3,12 +3,18 @@
     <title>Resources</title>
 {% endblock title %}
 {% block main %}
-    <h1>Resources</h1>
-    <form action="" method="GET">
+    <!-- <form action="" method="GET">
         <input type="text" name="search">
         <input type="submit">
+    </form> -->
+    <form action="" method="GET" style="display: flex; justify-content: center; align-items: center; margin: 40px 0; flex-wrap: wrap">
+        <input type="text" name="search" placeholder="Search..." 
+               style="width: 300px; padding: 10px 15px; border: 1px solid #ccc; border-radius: 25px; font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <input type="submit" value="Search" 
+               style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <a href="{% url 'resources' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Back</a>
     </form>
-    <ul>
+    <!-- <ul>
         {% for resource in resources %}
             <li>
                 <h2>{{resource.title}}</h2>
@@ -17,5 +23,14 @@
 
             </li>
         {% endfor %}
-    </ul>
+    </ul> -->
+    <div class="courses_box">
+        {% for item in resources %}
+            <div class="courses_cards_item">
+                <h3 class="courses_item_title">{{ item.title }}</h3>
+                <p class="courses_item_desc">{{ item.desc }}</p>
+                <a href="{{ resource.file.url }}" download class="courses_item_btn">Download</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock main %}

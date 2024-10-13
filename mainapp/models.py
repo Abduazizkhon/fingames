@@ -23,15 +23,20 @@ class Game(models.Model):
     outcome = models.TextField()
     pic = models.ImageField()
     file = models.FileField()
+    download_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.name
 
 class Topic(models.Model):
     name = models.CharField(max_length=255, null = False, blank = False)
+    def __str__(self):
+        return self.name
 
 class Type(models.Model):
     name = models.CharField(max_length=255, null = False, blank = False)
+    def __str__(self):
+        return self.name
 
 
 class Feedback(models.Model):

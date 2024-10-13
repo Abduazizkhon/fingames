@@ -1,0 +1,14 @@
+{% extends 'mainapp/base.html' %}
+
+{% block main %}
+    <h2>Edit type</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Type Name</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ admintype.name }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <a href="{% url 'admintype'  %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{%extends 'mainapp/base.html'%}
+{% block title %}
+<title>adminfeedback_detail</title>
+{% endblock title %}
+{% block main %}
+<h2>Information: </h2>
+<h4>Name:</h4>
+<li>{{feedback.email}}</li>
+<h4>Text:</h4>
+<li>{{feedback.text}}</li>
+<h4>Type:</h4>
+<li>{{feedback.type}}</li>
+{% endblock main %}

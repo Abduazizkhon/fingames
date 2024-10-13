@@ -3,5 +3,29 @@
     <title>admin_intro</title>
 {% endblock title %}
 {% block main %}
-        <li><a href="">{{intro.title}}</a></li>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Title:</label>
+        <input type="text" id="title" name="title" class="form-control" value="{{ intro.title }}" required>
+        <label for="content">Content:</label>
+        <br>
+        <!-- <input type="text" id="content" name="content" class="form-control" value="{{ projectdescription.content }}" required> -->
+        <textarea name="desc" id="">{{ intro.desc }}</textarea>
+        <br>
+        <label for="pic">Picture:</label>
+        <br>
+        <input type="file" name="pic">
+        <br>
+        {% if intro.img %}
+            <img src="{{ intro.img.url }}" alt="" width="200" height="200">
+        {% endif %}
+        <br>
+        <!-- not working^ -->
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+<a href="{% url 'admin'  %}" class="btn btn-secondary">Cancel</a>
 {% endblock main %}

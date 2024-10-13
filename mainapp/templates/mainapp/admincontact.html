@@ -3,14 +3,31 @@
     <title>admin_contact</title>
 {% endblock title %}
 {% block main %}
-    <form action="" method="GET">
-        <input type="text" name="search">
-        <input type="submit">
-    </form>
-   
-        <li><a href="">{{contact.email}}</a></li>
-        <li><a href="">{{contact.phone}}</a></li>
-        <li><a href="">{{contact.telegram}}</a></li>
-        <li><a href="">{{contact.address}}</a></li>
+ 
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="telegram">Telegram:</label>
+        <input type="text" id="telegram" name="telegram" class="form-control" value="{{ contact.telegram }}" required>
+
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" value="{{ contact.email }}" required>
+
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" class="form-control" value="{{ contact.phone }}" required>
+        <br>
+        <label for="phone">Address:</label>
+        <input type="text" id="address" name="address" class="form-control" value="{{ contact.address }}" required>
+
+
+
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+<a href="{% url 'admin'  %}" class="btn btn-secondary">Cancel</a>
 
 {% endblock main %}

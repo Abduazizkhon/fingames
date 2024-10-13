@@ -3,11 +3,14 @@
     <title>admin_resources</title>
 {% endblock title %}
 {% block main %}
+<a href="{% url 'adminresources' %}">back</a>
     <form action="" method="GET">
         <input type="text" name="search">
         <input type="submit">
     </form>
+    <a href="{% url 'add_resource' %}">New Game +</a>
+
     {% for item in resources %}
-        <li><a href="">{{item.title}}</a></li>
+        <li><a href="{% url 'adminresource_detail' item.id %}">{{item.title}}</a></li>
     {% endfor %}
 {% endblock main %}

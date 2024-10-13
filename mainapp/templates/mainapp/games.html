@@ -5,21 +5,47 @@
     {% endblock title %}
 
 {% block main %}
-    <h1>Games</h1>
-    <form action="" method="GET">
-        <input type="text" name="search">
-        <input type="submit">
+<div class="container">
+
+    <form action="" method="GET" style="display: flex; justify-content: center; align-items: center; margin: 40px 0; flex-wrap: wrap;">
+        <input type="text" name="search" placeholder="Search..." 
+               style="width: 300px; padding: 10px 15px; border: 1px solid #ccc; border-radius: 25px; font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <input type="submit" value="Search" 
+               style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Back</a>
     </form>
-    <ul>
+</div>
+    
+ 
+    
+    <!-- <ul>
         {% for game in games %}
             <li>
                 <h2>{{game.name}}</h2>
                 <p>{{game.desc}}</p>
-                <!-- <a href="{{ game.file.url }}" download>Download {{ game.title }}</a> -->
-                <a href="{% url 'game_detail' game.id %}">Go!</a> <!-- Link to the detailed view -->
+                <a href="{{ game.file.url }}" download>Download {{ game.title }}</a> 
+                <br>
+                <a href="{% url 'game_detail' game.id %}">Go!</a> 
             </li>
         {% endfor %}
-    </ul>
+    </ul> -->
+    <div class="courses_box">
+        {% for item in games %}
+            <div class="courses_cards_item">
+                <img src="{{ item.pic.url }}" alt="">
+                <h3 class="courses_item_title">{{ item.name }}</h3>
+                <p class="courses_item_desc">{{ item.desc }}</p>
+                <ul class="item_list">
+                    <li class="item_auth">Author: {{item.author}}</li>
+                    <li class="item_playernum">Number of players: {{item.playernum}}</li>
+                    <li class="item_playerage">Age: {{item.lowage}} - {{item.upage}}</li>
+                    <li class="item_duration">Duration: {{item.time}} minutes</li>
+                </ul>
+                <a href="{% url 'game_detail' item.id %}" class="courses_item_btn">Go</a>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock main %}
 
 <!-- transfer all html pages to this format -->

@@ -1,0 +1,11 @@
+{% extends 'mainapp/base.html' %}
+
+{% block main %}
+    <h2>Add New Resource</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Renders the form fields -->
+        <button type="submit">Add Resource</button>
+    </form>
+    <a href="{% url 'adminresources' %}">Cancel</a>  <!-- Link to go back to the list of games -->
+{% endblock %}

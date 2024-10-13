@@ -3,11 +3,14 @@
     <title>admin_games</title>
 {% endblock title %}
 {% block main %}
+    <a href="{% url 'admingames' %}">back</a>
     <form action="" method="GET">
         <input type="text" name="search">
         <input type="submit">
     </form>
+    <a href="{% url 'add_game' %}">New Game +</a>
+
     {% for game in games %}
-        <li><a href="">{{game}}</a></li>
+        <li><a href="{% url 'admingame_detail' game.id %}">{{game}}</a></li>
     {% endfor %}
 {% endblock main %}
