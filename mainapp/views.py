@@ -33,12 +33,79 @@ def navigation(active):
 
 @navigation('game_list')
 def game_list(request):
-    search = request.GET.get('search')    
+    used_filters = False
+    search = request.GET.get('search')   
+    type_game = request.GET.get('type')
+    topic_game = request.GET.get('topic')
+    time = request.GET.get('time')
+    age = request.GET.get('age')
+    playernum = request.GET.get('playernum')
+    filtered_games = []
+    types = Type.objects.all()
+    topics = Topic.objects.all()
+    filters = {
+        'search': search if search else '',
+        'type_game': int(type_game) if type_game else '0',
+        'topic_game': int(topic_game) if topic_game else '0',
+        'time': int(time) if time else '',
+        'age': int(age) if age else '',
+        'playernum': int(playernum) if playernum else '',
+    }   
+
     if search is None:        
         games = Game.objects.all().order_by('-id')
     else:        
-        games = Game.objects.filter(name__icontains=search)
-    return {'context': {'games': games}, 'html': 'mainapp/games.html'}
+        name = Game.objects.filter(name__icontains=search)
+        author = Game.objects.filter(author__icontains=search)
+        games = name | author
+    if type_game != '0' and type_game is not None:
+        type_obj = Type.objects.get(id = type_game)
+        games = games.filter(type = type_obj)
+        used_filters = True
+
+
+    if time != '' and time is not None:
+        games = games.filter(time = time)
+        used_filters = True
+  
+    if playernum != '' and playernum is not None:
+        games = games.filter(playernum = playernum)
+        used_filters = True
+
+    
+    if topic_game != '0' and topic_game is not None:
+        topic_obj = Topic.objects.get(id = topic_game)
+        games = games.filter(topic = topic_obj)
+        used_filters = True
+
+    
+   
+    if age != '' and age is not None:
+        age = int(age)
+        for game in games:
+            if game.lowage <= age <= game.upage:
+                filtered_games.append(game)
+        used_filters = True
+        return {'context': {'games': filtered_games, 
+                            'types': types, 
+                            'topics': topics, 
+                            'filters': filters,
+                            'used_filters': used_filters,}, 'html': 'mainapp/games.html'}
+
+        
+        
+    
+
+   
+
+
+
+        
+    return {'context': {'games': games, 
+                            'types': types, 
+                            'topics': topics, 
+                            'filters': filters,
+                            'used_filters': used_filters,}, 'html': 'mainapp/games.html'}
 
 
 def game_detail(request, game_id):

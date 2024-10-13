@@ -8,12 +8,57 @@
 <div class="container">
 
     <form action="" method="GET" style="display: flex; justify-content: center; align-items: center; margin: 40px 0; flex-wrap: wrap;">
-        <input type="text" name="search" placeholder="Search..." 
+        <input type="text" name="search" value = "{{filters.search}}" placeholder="Search..." 
                style="width: 300px; padding: 10px 15px; border: 1px solid #ccc; border-radius: 25px; font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <input type="submit" value="Search" 
                style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Back</a>
+        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Reset</a>
+        {% if used_filters %}
+        <div id="filters">
+            {% else  %}
+            <div id="filters" hidden = "hidden">
+            {% endif %}
+            <select name="type" id="">
+                <option value="0">select a type</option>
+                {% for type in types %}
+                    {% if type.id == filters.type_game %}
+                        <option value="{{type.id}}" selected>{{type.name}}</option>
+                    {% else %}
+                        <option value="{{type.id}}">{{type.name}}</option>
+
+                    {% endif %}
+                {% endfor %}
+            </select> 
+            <select name="topic" id="">
+                <option value="0">select a topic</option>
+                {% for topic in topics %}
+                    {% if topic.id == filters.topic_game %}
+                        <option value="{{topic.id}}" selected>{{topic.name}}</option>
+                    {% else %}
+                        <option value="{{topic.id}}">{{topic.name}}</option>
+                    {% endif %}
+
+
+                {% endfor %}
+            </select> 
+            <label for="">Duration</label>
+            <input type="number" name = "time" value="{{filters.time}}">
+            <label for="">Number of players</label>
+            <input type="number" name = "playernum" value="{{filters.playernum}}">
+            <label for="">Age</label>
+            <input type="number" name = "age" value="{{filters.age}}">
+            
+           
+
+
+
+        </div>
+
+        
+       
     </form>
+    <button onclick="open_filters()" type="button">Filters</button>
+
 </div>
     
  
@@ -45,6 +90,17 @@
             </div>
         {% endfor %}
     </div>
+<script>
+    function open_filters() {
+
+        let filters = document.getElementById('filters')
+        if(filters.hidden) {
+            filters.hidden = ''
+        } else{
+            filters.hidden = true
+        }
+    }
+</script>
 
 {% endblock main %}
 
