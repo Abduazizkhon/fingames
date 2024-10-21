@@ -13,6 +13,8 @@
         <input type="text" name="search" placeholder="Search types..." style="width: calc(100% - 110px); padding: 10px; border-radius: 5px; border: 1px solid #ccc; display: inline-block;">
         <input type="submit" value="Search" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; display: inline-block;">
     </form>
+    <a href="{% url 'add_type' %}" style="text-decoration: none; color: white; background-color: #007bff; padding: 10px 15px; border-radius: 4px; display: inline-block; margin-bottom: 20px;">New Type +</a>
+
 
     <ul style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
         {% for item in type %}

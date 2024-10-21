@@ -27,6 +27,10 @@ urlpatterns = [
     path('admin/resource_detail/<int:resource_id>/', adminviews.adminresource_detail, name="adminresource_detail"),
     path('admin/resource_delete/<int:resource_id>/', adminviews.delete_resource, name="delete_resource"),
     path('admin/resources/add/', adminviews.add_resource, name='add_resource'),
+    path('admin/type/add/', adminviews.add_type, name="add_type"),
+    path('admin/topic/add/', adminviews.add_topic, name="add_topic"),
+    path('admin/type_delete/<int:type_id>/', adminviews.delete_type, name="delete_type"),
+    path('admin/topic_delete/<int:topic_id>/', adminviews.delete_topic, name="delete_topic"),
 
 
 

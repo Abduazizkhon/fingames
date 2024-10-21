@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import GameForm, ResourceForm
+from .forms import GameForm, ResourceForm, TypeForm, TopicForm
 
 
 def navigation(active):    
@@ -208,6 +208,50 @@ def add_game(request):
     # return render(request, 'mainapp/add_game.html', {'form': form})
     return {'context': {'form': form}, 'html': 'mainapp/add_game.html'}
 
+#creating the button to add types and topics
+@login_required(login_url='login')
+@navigation('add_type')
+def add_type(request):
+    if request.method == 'POST':
+        form = TypeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('admintype')  # Redirect to the page where all games are listed
+    else:
+        form = TypeForm()
+
+    # return render(request, 'mainapp/add_game.html', {'form': form})
+    return {'context': {'form': form}, 'html': 'mainapp/add_type.html'}
+
+@login_required(login_url='login')
+@navigation('add_type')
+def add_topic(request):
+    if request.method == 'POST':
+        form = TopicForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('admintopic')  # Redirect to the page where all games are listed
+    else:
+        form = TopicForm()
+
+    # return render(request, 'mainapp/add_game.html', {'form': form})
+    return {'context': {'form': form}, 'html': 'mainapp/add_topic.html'}
+
+@login_required(login_url='login')
+def delete_type(request, type_id):
+    if request.method == 'POST':
+        type = get_object_or_404(Type, id = type_id)
+        type.delete()
+        return redirect('admintype')
+
+@login_required(login_url='login')
+def delete_topic(request, topic_id):
+    if request.method == 'POST':
+        topic = get_object_or_404(Topic, id = topic_id)
+        topic.delete()
+        return redirect('admintopic')
+
+
 @login_required(login_url='login')
 @navigation('add_resource')
 def add_resource(request):
@@ -237,8 +281,8 @@ def admintopic_detail(request, topic_id):
         topic.save()
 
         # Redirect to the topic detail page after saving
-        return redirect('admintopic_detail', topic_id=topic.id)
-    
+        # return redirect('admintopic_detail', topic_id=topic.id)
+        return redirect('admintopic', topic_id = topic.id)
 
 @login_required(login_url='login')
 @navigation('admintype_detail')
@@ -255,7 +299,9 @@ def admintype_detail(request, type_id):
         admintype.save()
 
         # Redirect to the topic detail page after saving
-        return redirect('admintype_detail', type_id=admintype.id)
+        # return redirect('admintype_detail', type_id=admintype.id)
+        return redirect('admintype', type_id=admintype.id)
+
     
 @login_required(login_url='login')
 @navigation('adminprojectdescription')
