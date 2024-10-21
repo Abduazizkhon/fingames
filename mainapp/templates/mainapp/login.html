@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html'%}
+{% block title %}
+    <title>login</title>
+{% endblock title %}
+
+{% block main %}
+<form method="POST" action="" style="display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: auto; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+    {% csrf_token %}
+    <h3 style="color: #007bff; text-align: center; margin-bottom: 10px;">Login</h3>
+    <input type="text" name="login" placeholder="Enter your login" style="padding: 10px; border-radius: 8px; border: 1px solid #007bff;">
+
+    <h3 style="color: #007bff; text-align: center; margin-bottom: 10px;">Password</h3>
+    <input type="password" name="password" placeholder="Enter your password" style="padding: 10px; border-radius: 8px; border: 1px solid #007bff;">
+
+    <input type="submit" value="Submit" style="padding: 10px; background-color: #007bff; color: white; border-radius: 8px; border: none; cursor: pointer; margin-top: 20px;">
+</form>
+{% endblock main %}
