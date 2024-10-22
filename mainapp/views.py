@@ -1,40 +1,44 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import *
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from telebot import TeleBot
+import os
 
 
-def navigation(active):    
+def navigation(active):
     def decorator(view):
-        def wrapper(request):            
+        def wrapper(request):
             contact = Contact.objects.latest('id')
-            navbar = [                
+            navbar = [
                 {'active': '', 'href': "main", 'text': 'Home'},
-                {'active': '', 'href': "game_list", 'text': 'Games'},                
+                {'active': '', 'href': "game_list", 'text': 'Games'},
                 {'active': '', 'href': "resources", 'text': 'Resources'},
-                {'active': '', 'href': "about", 'text': 'About'},            
+                {'active': '', 'href': "about", 'text': 'About'},
             ]
-            for elem in navbar:                
+            for elem in navbar:
                 if elem['href'] == active:
-                    elem['active'] = 'active'            
+                    elem['active'] = 'active'
             render_object = view(request)
             if not isinstance(render_object, dict):
                 return render_object
             if 'context' not in render_object.keys():
                 render_object['context'] = {}
             render_object['context'].update({'navbar': navbar})
-            render_object['context'].update({'contact': contact})            
+            render_object['context'].update({'contact': contact})
             return render(request, render_object['html'], render_object['context'])
-        return wrapper    
+
+        return wrapper
+
     return decorator
+
 
 @navigation('game_list')
 def game_list(request):
     used_filters = False
-    search = request.GET.get('search')   
+    search = request.GET.get('search')
     type_game = request.GET.get('type')
     topic_game = request.GET.get('topic')
     time = request.GET.get('time')
@@ -50,73 +54,73 @@ def game_list(request):
         'time': int(time) if time else '',
         'age': int(age) if age else '',
         'playernum': int(playernum) if playernum else '',
-    }   
+    }
 
-    if search is None:        
+    if search is None:
         games = Game.objects.all().order_by('-id')
-    else:        
+    else:
         name = Game.objects.filter(name__icontains=search)
         author = Game.objects.filter(author__icontains=search)
         games = name | author
     if type_game != '0' and type_game is not None:
-        type_obj = Type.objects.get(id = type_game)
-        games = games.filter(type = type_obj)
+        type_obj = Type.objects.get(id=type_game)
+        games = games.filter(type=type_obj)
         used_filters = True
-
 
     if time != '' and time is not None:
-        games = games.filter(time = time)
+        games = games.filter(time=time)
         used_filters = True
-  
+
     if playernum != '' and playernum is not None:
-        games = games.filter(playernum = playernum)
+        games = games.filter(playernum=playernum)
         used_filters = True
 
-    
     if topic_game != '0' and topic_game is not None:
-        topic_obj = Topic.objects.get(id = topic_game)
-        games = games.filter(topic = topic_obj)
+        topic_obj = Topic.objects.get(id=topic_game)
+        games = games.filter(topic=topic_obj)
         used_filters = True
 
-    
-   
     if age != '' and age is not None:
         age = int(age)
         for game in games:
             if game.lowage <= age <= game.upage:
                 filtered_games.append(game)
         used_filters = True
-        return {'context': {'games': filtered_games, 
-                            'types': types, 
-                            'topics': topics, 
+        return {'context': {'games': filtered_games,
+                            'types': types,
+                            'topics': topics,
                             'filters': filters,
-                            'used_filters': used_filters,}, 'html': 'mainapp/games.html'}
+                            'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
 
-        
-        
-    
-
-   
-
-
-
-        
-    return {'context': {'games': games, 
-                            'types': types, 
-                            'topics': topics, 
-                            'filters': filters,
-                            'used_filters': used_filters,}, 'html': 'mainapp/games.html'}
+    return {'context': {'games': games,
+                        'types': types,
+                        'topics': topics,
+                        'filters': filters,
+                        'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
 
 
 def game_detail(request, game_id):
-    game = get_object_or_404(Game, id = game_id)
-    contact = Contact.objects.latest('id') 
+    game = get_object_or_404(Game, id=game_id)
+    contact = Contact.objects.latest('id')
 
     return render(request, 'mainapp/game_detail.html', {'game': game, 'contact': contact})
 
+
+def download_game(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    game.download_count += 1
+    game.save()
+
+    file_path = game.file.path
+    with open(file_path, 'rb') as f:
+        response = HttpResponse(f.read())
+        response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
+        return response
+
+
 def resources(request):
     search = request.GET.get('search')
-    contact = Contact.objects.latest('id') 
+    contact = Contact.objects.latest('id')
 
     navbar = [
         {'active': '', 'href': "main", 'text': 'Home'},
@@ -127,12 +131,13 @@ def resources(request):
     if search is None:
         resources = AdditionalResources.objects.all().order_by('-id')
         return render(request, 'mainapp/resources.html', {'resources': resources, 'contact': contact, 'navbar': navbar})
-    resources = AdditionalResources.objects.filter(title__icontains = search)
+    resources = AdditionalResources.objects.filter(title__icontains=search)
     return render(request, 'mainapp/resources.html', {'resources': resources, 'contact': contact, 'navbar': navbar})
+
 
 def about(request):
     about = ProjectDescription.objects.latest('id')
-    contact = Contact.objects.latest('id') 
+    contact = Contact.objects.latest('id')
     navbar = [
         {'active': '', 'href': "main", 'text': 'Home'},
         {'active': '', 'href': "game_list", 'text': 'Games'},
@@ -148,19 +153,12 @@ def feedback(request):
         email = request.POST.get('email')
         content = request.POST.get('content')
         status = request.POST.get('status')
-        feedback = Feedback(email = email, text = content, type = status)
+        feedback = Feedback(email=email, text=content, type=status)
         feedback.save()
         bot = TeleBot("7359886263:AAFwxCySEDxrUL-EGyo6491fRIVEaaSYHGQ")
         bot.send_message("-1002232357914", f"Email:\n{email}\n\nContent:\n{content}\n\nStatus:\n{status}")
         return redirect('main')
 
-
-
-
-
-
-    
-    
 
 @navigation('main')
 def mainpage(request):
@@ -170,23 +168,19 @@ def mainpage(request):
     about = ProjectDescription.objects.latest('id')
 
     context = {
-        'games': games, 
-        'resources': resources, 
+        'games': games,
+        'resources': resources,
         'main_intro': main_intro,
-        'about': about 
-        }
+        'about': about
+    }
     return {'context': context, 'html': 'mainapp/main.html'}
 
+# pervesti html vo blocki,  sozdat main page, formi dlya feedbacka, poiskat pagi
 
-
-
-
-#pervesti html vo blocki,  sozdat main page, formi dlya feedbacka, poiskat pagi 
-
-#templates I chose:
-#https://templatemo.com/tm-557-grad-school
-#https://codepen.io/caseycallis/pen/pwEWxo (paralax for game cards)
-#https://www.free-css.com/free-css-templates/page283/webuild(realy free templates)
-#https://www.free-css.com/free-css-templates/page258/venue(check)
-#https://www.free-css.com/free-css-templates/page256/it-next
-#https://www.free-css.com/free-css-templates/page256/soft-landing
+# templates I chose:
+# https://templatemo.com/tm-557-grad-school
+# https://codepen.io/caseycallis/pen/pwEWxo (paralax for game cards)
+# https://www.free-css.com/free-css-templates/page283/webuild(realy free templates)
+# https://www.free-css.com/free-css-templates/page258/venue(check)
+# https://www.free-css.com/free-css-templates/page256/it-next
+# https://www.free-css.com/free-css-templates/page256/soft-landing

@@ -3,6 +3,7 @@ from . import views, adminviews
 urlpatterns = [
     path('games/', views.game_list, name="game_list"),
     path('games/<int:game_id>/', views.game_detail, name='game_detail'),
+    path('download_game/<int:game_id>/', views.download_game, name='download_game'),
     path('resources/', views.resources, name="resources"),
     path('about/', views.about, name='about'),
     path("login/", adminviews.loginview, name = "login"),
@@ -31,9 +32,4 @@ urlpatterns = [
     path('admin/topic/add/', adminviews.add_topic, name="add_topic"),
     path('admin/type_delete/<int:type_id>/', adminviews.delete_type, name="delete_type"),
     path('admin/topic_delete/<int:topic_id>/', adminviews.delete_topic, name="delete_topic"),
-
-
-
-
-
 ]
