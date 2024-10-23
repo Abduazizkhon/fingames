@@ -282,7 +282,7 @@ def admintopic_detail(request, topic_id):
 
         # Redirect to the topic detail page after saving
         # return redirect('admintopic_detail', topic_id=topic.id)
-        return redirect('admintopic', topic_id = topic.id)
+        return redirect('admintopic')
 
 @login_required(login_url='login')
 @navigation('admintype_detail')
@@ -300,7 +300,7 @@ def admintype_detail(request, type_id):
 
         # Redirect to the topic detail page after saving
         # return redirect('admintype_detail', type_id=admintype.id)
-        return redirect('admintype', type_id=admintype.id)
+        return redirect('admintype')
 
     
 @login_required(login_url='login')
