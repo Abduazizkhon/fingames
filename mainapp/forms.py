@@ -80,6 +80,7 @@ class TypeForm(forms.ModelForm):
             'name'
         ]
 
+
 class ResourceForm(forms.ModelForm):
     class Meta:
         model = AdditionalResources
