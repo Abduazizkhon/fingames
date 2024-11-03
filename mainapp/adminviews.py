@@ -87,6 +87,7 @@ def admingame_detail(request, game_id):
         game.goal = request.POST.get('goal')
         game.target = request.POST.get('target')
         game.outcome = request.POST.get('outcome')
+        game.content = request.POST.get('content')
 
         # Handle file uploads
         if 'pic' in request.FILES:

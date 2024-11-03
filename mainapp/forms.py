@@ -7,7 +7,7 @@ class GameForm(forms.ModelForm):
         fields = [
             'author', 'desc', 'name', 'topic', 'lowage', 'upage',
             'lowplayernum', 'upplayernum', 'lowtime', 'uptime', 'format', 'type', 'rules', 'goal',
-            'target', 'outcome', 'pic', 'file'
+            'target', 'outcome', 'content','pic', 'file'
         ]
 
         # Optional: Add custom widgets, labels, or help texts
@@ -28,6 +28,7 @@ class GameForm(forms.ModelForm):
             'goal': forms.Textarea(attrs={'class': 'form-control'}),
             'target': forms.Textarea(attrs={'class': 'form-control'}),
             'outcome': forms.Textarea(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
             'pic': forms.FileInput(attrs={'class': 'form-control'}),
             'file': forms.FileInput(attrs={'class': 'form-control'}),
         }
@@ -49,6 +50,7 @@ class GameForm(forms.ModelForm):
             'goal': 'Goal',
             'target': 'Target',
             'outcome': 'Outcome',
+            'content': 'Content',
             'pic': 'Picture',
             'file': 'File',
         }
@@ -70,6 +72,7 @@ class GameForm(forms.ModelForm):
             'goal': 'State the goal of the game.',
             'target': 'Define the target audience for the game.',
             'outcome': 'Describe the expected outcome of the game.',
+            'content': 'Describe the content of the file',
             'pic': 'Upload an image for the game.',
             'file': 'Upload any additional files related to the game.',
         }

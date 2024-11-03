@@ -25,6 +25,7 @@ class Game(models.Model):
     goal = models.TextField()
     target = models.TextField()
     outcome = models.TextField()
+    content = models.TextField()
     pic = models.ImageField()
     file = models.FileField()
     download_count = models.PositiveIntegerField(default=0)

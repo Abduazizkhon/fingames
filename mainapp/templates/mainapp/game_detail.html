@@ -49,6 +49,9 @@
     
         <!-- Outcome -->
         <p><strong>Expected Outcome:</strong> {{ game.outcome }}</p>
+
+        <!-- Content -->
+         <p><strong>Content of the file: </strong>{{game.content}}</p>
     
         <!-- Download Button -->
         <p>Download: <a href="{% url 'download_game' game.id %}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download Game</a></p>
