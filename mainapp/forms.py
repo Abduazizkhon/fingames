@@ -6,7 +6,7 @@ class GameForm(forms.ModelForm):
         model = Game
         fields = [
             'author', 'desc', 'name', 'topic', 'lowage', 'upage',
-            'playernum', 'time', 'format', 'type', 'rules', 'goal',
+            'lowplayernum', 'upplayernum', 'lowtime', 'uptime', 'format', 'type', 'rules', 'goal',
             'target', 'outcome', 'pic', 'file'
         ]
 
@@ -18,8 +18,10 @@ class GameForm(forms.ModelForm):
             'topic': forms.Select(attrs={'class': 'form-control'}),
             'lowage': forms.NumberInput(attrs={'class': 'form-control'}),
             'upage': forms.NumberInput(attrs={'class': 'form-control'}),
-            'playernum': forms.TextInput(attrs={'class': 'form-control'}),
-            'time': forms.NumberInput(attrs={'class': 'form-control'}),
+            'lowplayernum': forms.TextInput(attrs={'class': 'form-control'}),
+            'upplayernum': forms.TextInput(attrs={'class': 'form-control'}),
+            'lowtime': forms.NumberInput(attrs={'class': 'form-control'}),
+            'uptime': forms.NumberInput(attrs={'class': 'form-control'}),
             'format': forms.Select(attrs={'class': 'form-control'}),
             'type': forms.Select(attrs={'class': 'form-control'}),
             'rules': forms.Textarea(attrs={'class': 'form-control'}),
@@ -37,8 +39,10 @@ class GameForm(forms.ModelForm):
             'topic': 'Topic',
             'lowage': 'Minimum Age',
             'upage': 'Maximum Age',
-            'playernum': 'Number of Players',
-            'time': 'Time (minutes)',
+            'lowplayernum': 'Minimum Number of Players',
+            'upplayernum': 'Maximum Number of Players',
+            'lowtime': 'Minimum Time (minutes)',
+            'uptime': 'Maximum Time (minutes)',
             'format': 'Format',
             'type': 'Type',
             'rules': 'Rules',
@@ -56,8 +60,10 @@ class GameForm(forms.ModelForm):
             'topic': 'Select the topic associated with the game.',
             'lowage': 'Enter the minimum age for players.',
             'upage': 'Enter the maximum age for players.',
-            'playernum': 'Enter the number of players required for the game.',
-            'time': 'Enter the time required to complete the game (in minutes).',
+            'lowplayernum': 'Enter the minimum number of players required for the game.',
+            'upplayernum': 'Enter the maximum number of players required for the game.',
+            'lowtime': 'Enter the minimum time required to complete the game (in minutes).',
+            'uptime': 'Enter the maximum time required to complete the game (in minutes).',
             'format': 'Select the format of the game.',
             'type': 'Select the type of game.',
             'rules': 'Provide the rules of the game.',

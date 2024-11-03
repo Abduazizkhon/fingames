@@ -48,15 +48,39 @@
             </div>
         </div>
 
-        <div style="margin-bottom: 20px;">
-            <label for="playernum" style="display: block; margin-bottom: 5px;">Number of Players</label>
-            <textarea name="playernum" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.playernum }}</textarea>
+        <div style="display: flex; gap: 20px;">
+            <div style="flex: 1; margin-bottom: 20px;">
+                <label for="lowplayernum" style="display: block; margin-bottom: 5px;">Minimum Number of Players</label>
+                <input type="number" name="lowplayernum" value="{{ game.lowplayernum }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+
+            <div style="flex: 1; margin-bottom: 20px;">
+                <label for="upplayernum" style="display: block; margin-bottom: 5px;">Maximum Number of Players</label>
+                <input type="number" name="upplayernum" value="{{ game.upplayernum }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <!-- <div style="margin-bottom: 20px;">
+            <label for="playernum" style="display: block; margin-bottom: 5px;">Number of Players</label>
+            <textarea name="playernum" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.playernum }}</textarea>
+        </div> -->
+
+        <div style="display: flex; gap: 20px;">
+            <div style="flex: 1; margin-bottom: 20px;">
+                <label for="lowtime" style="display: block; margin-bottom: 5px;">Minimum time (minutes)</label>
+                <input type="number" name="lowtime" value="{{ game.lowtime }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+
+            <div style="flex: 1; margin-bottom: 20px;">
+                <label for="uptime" style="display: block; margin-bottom: 5px;">Maximum time (minutes)</label>
+                <input type="number" name="uptime" value="{{ game.uptime }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </div>
+        </div>
+
+        <!-- <div style="margin-bottom: 20px;">
             <label for="time" style="display: block; margin-bottom: 5px;">Time (minutes)</label>
             <input type="number" name="time" value="{{ game.time }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-        </div>
+        </div> -->
 
         <div style="margin-bottom: 20px;">
             <label for="format" style="display: block; margin-bottom: 5px;">Format</label>

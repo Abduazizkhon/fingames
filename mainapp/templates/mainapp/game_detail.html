@@ -27,10 +27,10 @@
         <p><strong>Recommended Age:</strong> {{ game.lowage }} - {{ game.upage }} years</p>
     
         <!-- Number of Players -->
-        <p><strong>Number of Players:</strong> {{ game.playernum }}</p>
+        <p><strong>Number of Players:</strong> {{ game.lowplayernum }} - {{ game.upplayernum }}</p>
     
         <!-- Duration -->
-        <p><strong>Playing Time:</strong> {{ game.time }} minutes</p>
+        <p><strong>Playing Time:</strong> {{ game.lowtime }} - {{ game.uptime }} minutes</p>
     
         <!-- Format -->
         <p><strong>Format:</strong> {{ game.get_format_display }}</p>

@@ -74,8 +74,13 @@ def admingame_detail(request, game_id):
         game.topic_id = request.POST.get('topic')  # Using topic_id to set the foreign key
         game.lowage = request.POST.get('lowage')
         game.upage = request.POST.get('upage')
-        game.playernum = request.POST.get('playernum')
-        game.time = request.POST.get('time')
+        # game.playernum = request.POST.get('playernum')
+        # game.time = request.POST.get('time')
+        game.lowplayernum = request.POST.get('lowplayernum')
+        game.upplayernum = request.POST.get('upplayernum')
+        game.lowtime = request.POST.get('lowtime')
+        game.uptime = request.POST.get('uptime')
+        #changed ^
         game.format = request.POST.get('format')
         game.type_id = request.POST.get('type')  # Using type_id to set the foreign key
         game.rules = request.POST.get('rules')

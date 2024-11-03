@@ -67,13 +67,15 @@ def game_list(request):
         games = games.filter(type=type_obj)
         used_filters = True
 
-    if time != '' and time is not None:
-        games = games.filter(time=time)
-        used_filters = True
+    # if time != '' and time is not None:
+    #     games = games.filter(time=time)
+    #     used_filters = True
 
-    if playernum != '' and playernum is not None:
-        games = games.filter(playernum=playernum)
-        used_filters = True
+    # if playernum != '' and playernum is not None:
+    #     games = games.filter(playernum=playernum)
+    #     used_filters = True
+
+    # they are replaced with conditions below
 
     if topic_game != '0' and topic_game is not None:
         topic_obj = Topic.objects.get(id=topic_game)
@@ -91,6 +93,31 @@ def game_list(request):
                             'topics': topics,
                             'filters': filters,
                             'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
+    
+    if time != '' and time is not None:
+        time = int(time)
+        for game in games:
+            if game.lowtime <= time <= game.uptime:
+                filtered_games.append(game)
+        used_filters = True
+        return {'context': {'games': filtered_games,
+                            'types': types,
+                            'topics': topics,
+                            'filters': filters,
+                            'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
+    
+    if playernum != '' and playernum is not None:
+        playernum = int(playernum)
+        for game in games:
+            if game.lowplayernum <= playernum <= game.upplayernum:
+                filtered_games.append(game)
+        used_filters = True
+        return {'context': {'games': filtered_games,
+                            'types': types,
+                            'topics': topics,
+                            'filters': filters,
+                            'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
+    
 
     return {'context': {'games': games,
                         'types': types,

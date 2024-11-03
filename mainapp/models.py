@@ -9,8 +9,12 @@ class Game(models.Model):
     topic = models.ForeignKey("Topic", on_delete=models.CASCADE)
     lowage = models.PositiveIntegerField()
     upage = models.PositiveIntegerField()
-    playernum = models.TextField()
-    time = models.PositiveIntegerField()
+    # playernum = models.TextField()
+    lowplayernum = models.PositiveIntegerField(default=0)
+    upplayernum = models.PositiveIntegerField(default=0)
+    # time = models.PositiveIntegerField()
+    lowtime = models.PositiveIntegerField(default=0)
+    uptime = models.PositiveIntegerField(default=0)
     format = models.CharField(max_length=255, null = False, blank = False, choices={
         'online': 'online',
         'offline': 'offline',

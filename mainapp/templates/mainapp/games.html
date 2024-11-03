@@ -78,12 +78,12 @@
             <div class="courses_cards_item">
                 <img src="{{ item.pic.url }}" alt="">
                 <h3 class="courses_item_title">{{ item.name }}</h3>
-                <p class="courses_item_desc">{{ item.desc }}</p>
+                <!-- <p class="courses_item_desc">{{ item.desc }}</p> -->
                 <ul class="item_list">
                     <li class="item_auth">Author: {{item.author}}</li>
-                    <li class="item_playernum">Number of players: {{item.playernum}}</li>
+                    <li class="item_playernum">Number of players: {{ item.lowplayernum }} - {{ item.upplayernum }}</li>
                     <li class="item_playerage">Age: {{item.lowage}} - {{item.upage}}</li>
-                    <li class="item_duration">Duration: {{item.time}} minutes</li>
+                    <li class="item_duration">Duration: {{ item.lowtime }} - {{ item.uptime }} minutes</li>
                 </ul>
                 <a href="{% url 'game_detail' item.id %}" class="courses_item_btn">Go</a>
             </div>
