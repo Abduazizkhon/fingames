@@ -45,7 +45,6 @@ def game_list(request):
     age = request.GET.get('age')
     playernum = request.GET.get('playernum')
     filtered_games = []
-    types = Type.objects.all()
     topics = Topic.objects.all()
     filters = {
         'search': search if search else '',
@@ -62,10 +61,6 @@ def game_list(request):
         name = Game.objects.filter(name__icontains=search)
         author = Game.objects.filter(author__icontains=search)
         games = name | author
-    if type_game != '0' and type_game is not None:
-        type_obj = Type.objects.get(id=type_game)
-        games = games.filter(type=type_obj)
-        used_filters = True
 
     # if time != '' and time is not None:
     #     games = games.filter(time=time)
@@ -89,7 +84,6 @@ def game_list(request):
                 filtered_games.append(game)
         used_filters = True
         return {'context': {'games': filtered_games,
-                            'types': types,
                             'topics': topics,
                             'filters': filters,
                             'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
@@ -101,7 +95,6 @@ def game_list(request):
                 filtered_games.append(game)
         used_filters = True
         return {'context': {'games': filtered_games,
-                            'types': types,
                             'topics': topics,
                             'filters': filters,
                             'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
@@ -113,14 +106,11 @@ def game_list(request):
                 filtered_games.append(game)
         used_filters = True
         return {'context': {'games': filtered_games,
-                            'types': types,
                             'topics': topics,
                             'filters': filters,
                             'used_filters': used_filters, }, 'html': 'mainapp/games.html'}
-    
 
     return {'context': {'games': games,
-                        'types': types,
                         'topics': topics,
                         'filters': filters,
                         'used_filters': used_filters, }, 'html': 'mainapp/games.html'}

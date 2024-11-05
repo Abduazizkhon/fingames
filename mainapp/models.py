@@ -20,7 +20,6 @@ class Game(models.Model):
         'offline': 'offline',
         'blended': 'blended'
     })
-    type = models.ForeignKey('Type', on_delete=models.CASCADE)
     rules = models.TextField()
     goal = models.TextField()
     target = models.TextField()
@@ -33,13 +32,10 @@ class Game(models.Model):
     def __str__(self):
         return self.name
 
+
 class Topic(models.Model):
     name = models.CharField(max_length=255, null = False, blank = False)
-    def __str__(self):
-        return self.name
 
-class Type(models.Model):
-    name = models.CharField(max_length=255, null = False, blank = False)
     def __str__(self):
         return self.name
 

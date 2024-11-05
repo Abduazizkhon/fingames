@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import GameForm, ResourceForm, TypeForm, TopicForm
+from .forms import GameForm, ResourceForm, TopicForm
 
 
 def navigation(active):    
@@ -13,15 +13,12 @@ def navigation(active):
             contact = Contact.objects.latest('id')
             navbar = [                
                 {'active': '', 'href': "admingames", 'text': 'Game'},
-                {'active': '', 'href': "admintopic", 'text': 'Topic'},                
-                {'active': '', 'href': "admintype", 'text': 'Type'},
+                {'active': '', 'href': "admintopic", 'text': 'Topic'},
                 {'active': '', 'href': "adminfeedback", 'text': 'Feedback'}, 
                 {'active': '', 'href': "adminprojectdescription", 'text': 'projectdescription'},   
                 {'active': '', 'href': "adminresources", 'text': 'resources'},
                 {'active': '', 'href': "adminintro", 'text': 'intro'}, 
-                {'active': '', 'href': "admincontact", 'text': 'contact'}, 
-
-
+                {'active': '', 'href': "admincontact", 'text': 'contact'},
             ]
 
             for elem in navbar:                
@@ -64,8 +61,7 @@ def admingame_detail(request, game_id):
 
     if request.method == 'GET':
         topics = Topic.objects.all()
-        types = Type.objects.all()
-        return {'context': {'game': game, 'topics': topics, 'types': types}, 'html': 'mainapp/admingame_detail.html'}
+        return {'context': {'game': game, 'topics': topics}, 'html': 'mainapp/admingame_detail.html'}
     elif request.method == 'POST':
         # Get form data
         game.author = request.POST.get('author')
@@ -82,7 +78,6 @@ def admingame_detail(request, game_id):
         game.uptime = request.POST.get('uptime')
         #changed ^
         game.format = request.POST.get('format')
-        game.type_id = request.POST.get('type')  # Using type_id to set the foreign key
         game.rules = request.POST.get('rules')
         game.goal = request.POST.get('goal')
         game.target = request.POST.get('target')
@@ -112,19 +107,6 @@ def admintopic(request):
         topic = Topic.objects.filter(name__icontains = search)
     # return render(request, "mainapp/admintopic.html", {"topic": topic})
     return {'context': {'topic': topic}, 'html': 'mainapp/admintopic.html'}
-
-
-
-@login_required(login_url='login')
-@navigation('admintype')
-def admintype(request):
-    search = request.GET.get('search')
-    if search is None:
-        type = Type.objects.all().order_by('-id')
-    else:
-        type = Type.objects.filter(name__icontains = search)
-    # return render(request, "mainapp/admintype.html", {"type": type})
-    return {'context': {'type': type}, 'html': 'mainapp/admintype.html'}
 
 
 @login_required(login_url='login')
@@ -214,20 +196,6 @@ def add_game(request):
     # return render(request, 'mainapp/add_game.html', {'form': form})
     return {'context': {'form': form}, 'html': 'mainapp/add_game.html'}
 
-#creating the button to add types and topics
-@login_required(login_url='login')
-@navigation('add_type')
-def add_type(request):
-    if request.method == 'POST':
-        form = TypeForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('admintype')  # Redirect to the page where all games are listed
-    else:
-        form = TypeForm()
-
-    # return render(request, 'mainapp/add_game.html', {'form': form})
-    return {'context': {'form': form}, 'html': 'mainapp/add_type.html'}
 
 @login_required(login_url='login')
 @navigation('add_type')
@@ -243,12 +211,6 @@ def add_topic(request):
     # return render(request, 'mainapp/add_game.html', {'form': form})
     return {'context': {'form': form}, 'html': 'mainapp/add_topic.html'}
 
-@login_required(login_url='login')
-def delete_type(request, type_id):
-    if request.method == 'POST':
-        type = get_object_or_404(Type, id = type_id)
-        type.delete()
-        return redirect('admintype')
 
 @login_required(login_url='login')
 def delete_topic(request, topic_id):
@@ -289,24 +251,6 @@ def admintopic_detail(request, topic_id):
         # Redirect to the topic detail page after saving
         # return redirect('admintopic_detail', topic_id=topic.id)
         return redirect('admintopic')
-
-@login_required(login_url='login')
-@navigation('admintype_detail')
-def admintype_detail(request, type_id):
-    admintype = get_object_or_404(Type, id=type_id)
-
-    if request.method == 'GET':
-        return {'context': {'admintype': admintype}, 'html': 'mainapp/admintype_detail.html'}
-    elif request.method == 'POST':
-        # Get form data
-        admintype.name = request.POST.get('name')
-
-        # Save the topic instance with updated data
-        admintype.save()
-
-        # Redirect to the topic detail page after saving
-        # return redirect('admintype_detail', type_id=admintype.id)
-        return redirect('admintype')
 
     
 @login_required(login_url='login')

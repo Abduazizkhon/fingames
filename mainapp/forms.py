@@ -1,13 +1,14 @@
 from django import forms
-from .models import Game, Type, Topic, AdditionalResources
+from .models import Game, Topic, AdditionalResources
+
 
 class GameForm(forms.ModelForm):
     class Meta:
         model = Game
         fields = [
             'author', 'desc', 'name', 'topic', 'lowage', 'upage',
-            'lowplayernum', 'upplayernum', 'lowtime', 'uptime', 'format', 'type', 'rules', 'goal',
-            'target', 'outcome', 'content','pic', 'file'
+            'lowplayernum', 'upplayernum', 'lowtime', 'uptime', 'format', 'rules', 'goal',
+            'target', 'outcome', 'content', 'pic', 'file'
         ]
 
         # Optional: Add custom widgets, labels, or help texts
@@ -23,7 +24,6 @@ class GameForm(forms.ModelForm):
             'lowtime': forms.NumberInput(attrs={'class': 'form-control'}),
             'uptime': forms.NumberInput(attrs={'class': 'form-control'}),
             'format': forms.Select(attrs={'class': 'form-control'}),
-            'type': forms.Select(attrs={'class': 'form-control'}),
             'rules': forms.Textarea(attrs={'class': 'form-control'}),
             'goal': forms.Textarea(attrs={'class': 'form-control'}),
             'target': forms.Textarea(attrs={'class': 'form-control'}),
@@ -45,7 +45,6 @@ class GameForm(forms.ModelForm):
             'lowtime': 'Minimum Time (minutes)',
             'uptime': 'Maximum Time (minutes)',
             'format': 'Format',
-            'type': 'Type',
             'rules': 'Rules',
             'goal': 'Goal',
             'target': 'Target',
@@ -67,7 +66,6 @@ class GameForm(forms.ModelForm):
             'lowtime': 'Enter the minimum time required to complete the game (in minutes).',
             'uptime': 'Enter the maximum time required to complete the game (in minutes).',
             'format': 'Select the format of the game.',
-            'type': 'Select the type of game.',
             'rules': 'Provide the rules of the game.',
             'goal': 'State the goal of the game.',
             'target': 'Define the target audience for the game.',
@@ -77,17 +75,11 @@ class GameForm(forms.ModelForm):
             'file': 'Upload any additional files related to the game.',
         }
 
+
 class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['name']
-
-class TypeForm(forms.ModelForm):
-    class Meta:
-        model = Type
-        fields = [
-            'name'
-        ]
 
 
 class ResourceForm(forms.ModelForm):
