@@ -3,24 +3,24 @@
 {% block main %}
 <div style="max-width: 800px; margin: 20px auto; padding: 20px; border: 2px solid #007bff; border-radius: 8px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
 
-    <h2 style="text-align: center; color: #007bff;">Add New Topic</h2>
+    <h2 style="text-align: center; color: #007bff;">Yangi Mavzu Kiritish</h2>
 
     <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
         {% csrf_token %}
         
         <!-- Custom rendering of form fields with labels above inputs -->
         <div style="display: flex; flex-direction: column;">
-            <label for="name" style="margin-bottom: 5px; font-weight: bold; color: #007bff;">Name:</label>
+            <label for="name" style="margin-bottom: 5px; font-weight: bold; color: #007bff;">Mavzu Nomi:</label>
             <input type="text" name="name" id="name" required style="padding: 10px; border: 1px solid #007bff; border-radius: 4px;">
         </div>
         
         <button type="submit" style="background-color: #007bff; color: white; border: none; border-radius: 5px; padding: 10px; cursor: pointer; font-size: 16px;">
-            Add Topic
+            Mavzu Kiritish
         </button>
     </form>
 
     <div style="text-align: center; margin-top: 20px;">
-        <a href="{% url 'admintopic' %}" style="text-decoration: none; color: #007bff; font-weight: bold;">Cancel</a>
+        <a href="{% url 'admintopic' %}" style="text-decoration: none; color: #007bff; font-weight: bold;">Bekor Qilish</a>
     </div>
 </div>
 

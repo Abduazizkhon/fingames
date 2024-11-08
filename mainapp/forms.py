@@ -34,52 +34,59 @@ class GameForm(forms.ModelForm):
         }
 
         labels = {
-            'author': 'Author',
-            'desc': 'Description',
-            'name': 'Name',
-            'topic': 'Topic',
-            'lowage': 'Minimum Age',
-            'upage': 'Maximum Age',
-            'lowplayernum': 'Minimum Number of Players',
-            'upplayernum': 'Maximum Number of Players',
-            'lowtime': 'Minimum Time (minutes)',
-            'uptime': 'Maximum Time (minutes)',
+            'author': 'Muallif',
+            'desc': 'Tavsifi',
+            'name': 'Nomi',
+            'topic': 'Mavzu',
+            'lowage': 'Yoshdan',
+            'upage': 'Yoshgacha',
+            'lowplayernum': 'Eng Kam Ishtirokchilar Soni',
+            'upplayernum': "Eng Ko'p Ishtirokchilar Soni",
+            'lowtime': 'Eng Kam davomiylik vaqti (daqiqa)',
+            'uptime': "Eng Ko'p davomiylik vaqti (daqiqa)",
             'format': 'Format',
-            'rules': 'Rules',
-            'goal': 'Goal',
-            'target': 'Target',
-            'outcome': 'Outcome',
-            'content': 'Content',
-            'pic': 'Picture',
-            'file': 'File',
+            'rules': 'Qoidasi',
+            'goal': 'Maqsadi',
+            'target': 'Vazifalari',
+            'outcome': 'Kompetensiyalar',
+            'content': 'Materiallar tarkibi',
+            'pic': 'Surat',
+            'file': 'Fayl',
         }
 
         help_texts = {
-            'author': 'Enter the author of the game.',
-            'desc': 'Provide a detailed description of the game.',
-            'name': 'Enter the name of the game.',
-            'topic': 'Select the topic associated with the game.',
-            'lowage': 'Enter the minimum age for players.',
-            'upage': 'Enter the maximum age for players.',
-            'lowplayernum': 'Enter the minimum number of players required for the game.',
-            'upplayernum': 'Enter the maximum number of players required for the game.',
-            'lowtime': 'Enter the minimum time required to complete the game (in minutes).',
-            'uptime': 'Enter the maximum time required to complete the game (in minutes).',
-            'format': 'Select the format of the game.',
-            'rules': 'Provide the rules of the game.',
-            'goal': 'State the goal of the game.',
-            'target': 'Define the target audience for the game.',
-            'outcome': 'Describe the expected outcome of the game.',
-            'content': 'Describe the content of the file',
-            'pic': 'Upload an image for the game.',
-            'file': 'Upload any additional files related to the game.',
+            'author': 'O\'yinning muallifini kiriting.',
+            'desc': 'O\'yin haqida batafsil ta\'rif bering.',
+            'name': 'O\'yin nomini kiriting.',
+            'topic': 'O\'yinga tegishli mavzuni tanlang.',
+            'lowage': 'O\'yinchilar uchun minimal yoshni kiriting.',
+            'upage': 'O\'yinchilar uchun maksimal yoshni kiriting.',
+            'lowplayernum': 'O\'yinda qatnashishi kerak bo\'lgan minimal o\'yinchilar sonini kiriting.',
+            'upplayernum': 'O\'yinda qatnashishi mumkin bo\'lgan maksimal o\'yinchilar sonini kiriting.',
+            'lowtime': 'O\'yinni tugatish uchun zarur bo\'lgan minimal vaqtni kiriting (daqiqalarda).',
+            'uptime': 'O\'yinni tugatish uchun zarur bo\'lgan maksimal vaqtni kiriting (daqiqalarda).',
+            'format': 'O\'yin formatini tanlang.',
+            'rules': 'O\'yin qoidalarini kiriting.',
+            'goal': 'O\'yinning maqsadini yozing.',
+            'target': 'O\'yin uchun mo\'ljallangan vazifalarni belgilang.',
+            'outcome': 'O\'yinning kutilayotgan kompetensiyalarni tasvirlang.',
+            'content': 'Materiallar tarkibini tasvirlab bering.',
+            'pic': 'O\'yin uchun rasm yuklang.',
+            'file': 'O\'yinga tegishli qo\'shimcha fayllarni yuklang.',
         }
+
 
 
 class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'name': 'Mavzu Nomi',
+        }
 
 
 class ResourceForm(forms.ModelForm):

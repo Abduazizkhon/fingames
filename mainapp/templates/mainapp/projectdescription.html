@@ -4,27 +4,27 @@
 {% endblock title %}
 {% block main %}
 <div style="max-width: 800px; margin: 20px auto; padding: 20px; border: 2px solid #007bff; border-radius: 8px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-    <a href="{% url 'admin' %}" style="text-decoration: none; color: #007bff; font-weight: bold; display: inline-block; margin-bottom: 20px;">Back</a>
+    <a href="{% url 'admin' %}" style="text-decoration: none; color: #007bff; font-weight: bold; display: inline-block; margin-bottom: 20px;">Orqaga Qaytish</a>
 
     <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
         {% csrf_token %}
         <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
-            <label for="title" style="font-weight: bold; color: #007bff;">Title:</label>
+            <label for="title" style="font-weight: bold; color: #007bff;">Sarlavha:</label>
             <input type="text" id="title" name="title" class="form-control" value="{{ projectdescription.title }}" required style="padding: 10px; border: 1px solid #007bff; border-radius: 4px;">
         </div>
         
         <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
-            <label for="content" style="font-weight: bold; color: #007bff;">Content:</label>
+            <label for="content" style="font-weight: bold; color: #007bff;">Ma'lumot Qismi:</label>
             <textarea name="content" id="content" required style="padding: 10px; border: 1px solid #007bff; border-radius: 4px; height: 150px;">{{ projectdescription.content }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary" style="background-color: #007bff; color: white; border: none; border-radius: 5px; padding: 10px; cursor: pointer; font-size: 16px;">
-            Save Changes
+            O'zgarishlarni Saqlash
         </button>
     </form>
     
     <a href="{% url 'admin'  %}" class="btn btn-secondary" style="background-color: #6c757d; color: white; border: none; border-radius: 5px; padding: 10px; text-decoration: none; display: inline-block; margin-top: 10px;">
-        Cancel
+        Bekor Qilish
     </a>
 </div>
 

@@ -8,17 +8,17 @@
 <div class="container">
 
     <form action="" method="GET" style="display: flex; justify-content: center; align-items: center; margin: 40px 0; flex-wrap: wrap;">
-        <input type="text" name="search" value = "{{filters.search}}" placeholder="Search..." 
+        <input type="text" name="search" value = "{{filters.search}}" placeholder="Qidirish..." 
                style="width: 300px; padding: 10px 15px; border: 1px solid #ccc; border-radius: 25px; font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 5px;">
-        <input type="submit" value="Search" 
+        <input type="submit" value="Qidirish" 
                style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Reset</a>
+        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Qayta Tiklash</a>
         {% if used_filters %}
         <div id="filters" style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; margin-top: 20px;">
     {% else %}
         <div id="filters" hidden="hidden" style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; margin-top: 20px;">
     {% endif %}
-        <select name="type" id="" style="padding: 10px; border-radius: 8px; background-color: #007bff; color: white; border: none;">
+        <!-- <select name="type" id="" style="padding: 10px; border-radius: 8px; background-color: #007bff; color: white; border: none;">
             <option value="0">Select a type</option>
             {% for type in types %}
                 {% if type.id == filters.type_game %}
@@ -27,21 +27,21 @@
                     <option value="{{type.id}}">{{type.name}}</option>
                 {% endif %}
             {% endfor %}
-        </select> 
+        </select>  -->
     
        
     
-        <label for="" style="color: #007bff;">Duration</label>
+        <label for="" style="color: #007bff;">Davomiylik</label>
         
         <input type="number" name="time" value="{{filters.time}}" style="padding: 5px; border-radius: 8px; border: 1px solid #007bff;">
     
-        <label for="" style="color: #007bff;">Number of players</label>
+        <label for="" style="color: #007bff;">O'yinchilar Soni</label>
         <input type="number" name="playernum" value="{{filters.playernum}}" style="padding: 5px; border-radius: 8px; border: 1px solid #007bff;">
     
-        <label for="" style="color: #007bff;">Age</label>
+        <label for="" style="color: #007bff;">Yoshi</label>
         <input type="number" name="age" value="{{filters.age}}" style="padding: 5px; border-radius: 8px; border: 1px solid #007bff;">
         <select name="topic" id="" style="padding: 5px; border-radius: 8px; background-color: #007bff; color: white; border: none;">
-            <option value="0">Select a topic</option>
+            <option value="0">Mavzuni Tanlash</option>
             {% for topic in topics %}
                 {% if topic.id == filters.topic_game %}
                     <option value="{{topic.id}}" selected>{{topic.name}}</option>
@@ -55,7 +55,7 @@
     
     </form>
     
-    <button onclick="open_filters()" type="button" style="padding: 10px 20px; background-color: #007bff; color: white; border-radius: 8px; border: none; cursor: pointer;">Filters</button>
+    <button onclick="open_filters()" type="button" style="padding: 10px 20px; background-color: #007bff; color: white; border-radius: 8px; border: none; cursor: pointer;">Filterlash</button>
     
 
 </div>
@@ -80,12 +80,12 @@
                 <h3 class="courses_item_title">{{ item.name }}</h3>
                 <!-- <p class="courses_item_desc">{{ item.desc }}</p> -->
                 <ul class="item_list">
-                    <li class="item_auth">Author: {{item.author}}</li>
-                    <li class="item_playernum">Number of players: {{ item.lowplayernum }} - {{ item.upplayernum }}</li>
-                    <li class="item_playerage">Age: {{item.lowage}} - {{item.upage}}</li>
-                    <li class="item_duration">Duration: {{ item.lowtime }} - {{ item.uptime }} minutes</li>
+                    <li class="item_auth">Muallif: {{item.author}}</li>
+                    <li class="item_playernum">Ishtirokchilar soni: {{ item.lowplayernum }} - {{ item.upplayernum }}</li>
+                    <li class="item_playerage">Ishtirokchilar yoshi: {{item.lowage}} - {{item.upage}}</li>
+                    <li class="item_duration">Ishtirokchilar yoshi: {{ item.lowtime }} - {{ item.uptime }} minutes</li>
                 </ul>
-                <a href="{% url 'game_detail' item.id %}" class="courses_item_btn">Go</a>
+                <a href="{% url 'game_detail' item.id %}" class="courses_item_btn">TANLASH</a>
             </div>
         {% endfor %}
     </div>

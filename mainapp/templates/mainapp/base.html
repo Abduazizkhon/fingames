@@ -83,7 +83,7 @@
                 </div>
                 {% if not user.is_staff %}
                     <a href="#section1" class="btn btn-primary py-2 px-4 d-none d-lg-block" >
-                        Feedback
+                        Tavsiya Qoldirish
                     </a>
                 {% else %}
                     <a href="{% url 'admin' %}" class="btn btn-primary py-2 px-4 d-none d-lg-block" >
@@ -106,7 +106,7 @@
                 <a href="index.html" class="navbar-brand">
                     <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>TDIU</h1>
                 </a>
-                <p class="m-0">Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita diam</p>
+                <p class="m-0">“O‘quvchilar uchun moliyaviy o‘yinlarga asoslangan majmua va uning platformasini ishlab chiqish” mavzusidagi amaliy loyiha</p>
             </div>
             <footer>
                 {% if not user.is_staff %}
@@ -114,21 +114,21 @@
                     {% csrf_token %}
                     
                     <h3 style="color: white; font-size: 24px; margin-bottom: 15px; text-align: left;">Email</h3>
-                    <input type="email" name="email" placeholder="Your Email Address" 
+                    <input type="email" name="email" placeholder="Sizning Email Manzilingiz" 
                            style="width: 100%; padding: 15px; margin-bottom: 15px; font-size: 16px; color: #6C757D; border: 1px solid #ccc; border-radius: 5px; outline: none;">
                 
                     <select name="status" id="" 
                             style="width: 100%; padding: 15px; margin-bottom: 15px; font-size: 16px; color: #6C757D; border: 1px solid #ccc; border-radius: 5px; outline: none; background-color: white; appearance: none;">
-                        <option value="teacher">Teacher</option>
-                        <option value="student">Student</option>
-                        <option value="other">Other</option>
+                        <option value="teacher">O'qituvchi</option>
+                        <option value="student">O'quvchi</option>
+                        <option value="other">Boshqa</option>
                     </select>
                     
-                    <h3 style="color: white; font-size: 24px; margin-bottom: 15px; text-align: left;">Feedback:</h3>
-                    <textarea name="content" id="" placeholder="Your Feedback" class="d-block"
+                    <h3 style="color: white; font-size: 24px; margin-bottom: 15px; text-align: left;">Tavsiya:</h3>
+                    <textarea name="content" id="" placeholder="Sizning Tavsiyangiz" class="d-block"
                               style="width: 100%; height: 100px; padding: 15px; margin-bottom: 15px; font-size: 16px; color: #6C757D; border: 1px solid #ccc; border-radius: 5px; outline: none; resize: vertical;"></textarea>
                 
-                    <input type="submit" value="Submit" 
+                    <input type="submit" value="Yuborish" 
                            style="width: 100%; padding: 15px; background-color: #2878EB; color: white; font-size: 16px; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; transition: background-color 300ms ease, transform 300ms ease;">
                 
                 </form>

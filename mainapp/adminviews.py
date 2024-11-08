@@ -12,13 +12,13 @@ def navigation(active):
         def wrapper(request, *args, **kwargs):            
             contact = Contact.objects.latest('id')
             navbar = [                
-                {'active': '', 'href': "admingames", 'text': 'Game'},
-                {'active': '', 'href': "admintopic", 'text': 'Topic'},
-                {'active': '', 'href': "adminfeedback", 'text': 'Feedback'}, 
-                {'active': '', 'href': "adminprojectdescription", 'text': 'projectdescription'},   
-                {'active': '', 'href': "adminresources", 'text': 'resources'},
-                {'active': '', 'href': "adminintro", 'text': 'intro'}, 
-                {'active': '', 'href': "admincontact", 'text': 'contact'},
+                {'active': '', 'href': "admingames", 'text': "O'yinlar"},
+                {'active': '', 'href': "admintopic", 'text': 'Mavzular'},
+                {'active': '', 'href': "adminfeedback", 'text': 'Tavsiyalar'}, 
+                {'active': '', 'href': "adminprojectdescription", 'text': 'Loyiha Tasviri'},   
+                {'active': '', 'href': "adminresources", 'text': 'Resurslar'},
+                {'active': '', 'href': "adminintro", 'text': 'Kirish Qismi'}, 
+                {'active': '', 'href': "admincontact", 'text': "Bog'lanish"},
             ]
 
             for elem in navbar:                
@@ -37,7 +37,7 @@ def navigation(active):
 
 
 @login_required(login_url='login')
-@navigation('')
+@navigation('admingames')
 def adminpannel(request):
     if not request.user.is_staff:
         return redirect(login)

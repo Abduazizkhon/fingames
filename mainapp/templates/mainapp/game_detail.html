@@ -15,52 +15,52 @@
         <img src="{{ game.pic.url }}" alt="{{ game.name }}" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
     
         <!-- Game Author -->
-        <p><strong>Author:</strong> {{ game.author }}</p>
+        <p><strong>Muallif: </strong> {{ game.author }}</p>
     
         <!-- Game Description -->
-        <p><strong>Description:</strong> {{ game.desc }}</p>
+        <p><strong>Tavsifi: </strong> {{ game.desc }}</p>
     
         <!-- Game Topic -->
-        <p><strong>Topic:</strong> {{ game.topic }}</p>
+        <p><strong>Mavzu: </strong> {{ game.topic }}</p>
     
         <!-- Age Range -->
-        <p><strong>Recommended Age:</strong> {{ game.lowage }} - {{ game.upage }} years</p>
+        <p><strong>Ishtirokchilar yoshi: </strong> {{ game.lowage }} - {{ game.upage }} yosh</p>
     
         <!-- Number of Players -->
-        <p><strong>Number of Players:</strong> {{ game.lowplayernum }} - {{ game.upplayernum }}</p>
+        <p><strong>Ishtirokchilar soni: </strong> {{ game.lowplayernum }} - {{ game.upplayernum }}</p>
     
         <!-- Duration -->
-        <p><strong>Playing Time:</strong> {{ game.lowtime }} - {{ game.uptime }} minutes</p>
+        <p><strong>Davomiyligi: </strong> {{ game.lowtime }} - {{ game.uptime }} daqiqa</p>
     
         <!-- Format -->
-        <p><strong>Format:</strong> {{ game.get_format_display }}</p>
+        <p><strong>Format: </strong> {{ game.get_format_display }}</p>
     
         <!-- Game Type -->
-        <p><strong>Type:</strong> {{ game.type }}</p>
+    
     
         <!-- Game Rules -->
-        <p><strong>Rules:</strong> {{ game.rules }}</p>
+        <p><strong>Qoidasi: </strong> {{ game.rules }}</p>
     
         <!-- Game Goal -->
-        <p><strong>Goal:</strong> {{ game.goal }}</p>
+        <p><strong>Maqsadi: </strong> {{ game.goal }}</p>
     
         <!-- Target Audience -->
-        <p><strong>Target Audience:</strong> {{ game.target }}</p>
+        <p><strong>Vazifalari: </strong> {{ game.target }}</p>
     
         <!-- Outcome -->
-        <p><strong>Expected Outcome:</strong> {{ game.outcome }}</p>
+        <p><strong>Kompetensiyalar: </strong> {{ game.outcome }}</p>
 
         <!-- Content -->
-         <p><strong>Content of the file: </strong>{{game.content}}</p>
+         <p><strong>Materiallar tarkibi: </strong>{{game.content}}</p>
     
         <!-- Download Button -->
-        <p>Download: <a href="{% url 'download_game' game.id %}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Download Game</a></p>
+        <p>Yuklab Olish: <a href="{% url 'download_game' game.id %}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">O'yin Manbasi</a></p>
 
         <!-- Download count -->
-        <p><strong>Statistics:</strong> {{ game.download_count }} downloads</p>
+        <p><strong>Statistika: </strong> {{ game.download_count }} marta yuklab olingan</p>
     
         <!-- Back to Games Button -->
-        <a href="{% url 'game_list' %}" style="color: #007bff; text-decoration: none; border: 1px solid #007bff; padding: 10px 15px; border-radius: 5px; display: inline-block;">Back to Games</a>
+        <a href="{% url 'game_list' %}" style="color: #007bff; text-decoration: none; border: 1px solid #007bff; padding: 10px 15px; border-radius: 5px; display: inline-block;">O'yinlarga Qaytish</a>
     </div>
     
 {% endblock main %}

@@ -6,29 +6,29 @@
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
     
     <a href="{% url 'admingames' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">
-        Back to Games
+        Oyinlar Sahifasiga Qaytish
     </a>
 
     <form method="post" enctype="multipart/form-data" style="border: 1px solid #ccc; padding: 20px; border-radius: 10px;">
         {% csrf_token %}
 
         <div style="margin-bottom: 20px;">
-            <label for="author" style="display: block; margin-bottom: 5px;">Author</label>
+            <label for="author" style="display: block; margin-bottom: 5px;">Muallif</label>
             <input type="text" name="author" value="{{ game.author }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="desc" style="display: block; margin-bottom: 5px;">Description</label>
+            <label for="desc" style="display: block; margin-bottom: 5px;">Tavsifi</label>
             <textarea name="desc" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.desc }}</textarea>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
+            <label for="name" style="display: block; margin-bottom: 5px;">Nomi</label>
             <input type="text" name="name" value="{{ game.name }}" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="topic" style="display: block; margin-bottom: 5px;">Topic</label>
+            <label for="topic" style="display: block; margin-bottom: 5px;">Mavzu</label>
             <select name="topic" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 {% for topic in topics %}
                     <option value="{{ topic.id }}" {% if topic.id == game.topic.id %}selected{% endif %}>{{ topic.name }}</option>
@@ -38,24 +38,24 @@
 
         <div style="display: flex; gap: 20px;">
             <div style="flex: 1; margin-bottom: 20px;">
-                <label for="lowage" style="display: block; margin-bottom: 5px;">Lower Age</label>
+                <label for="lowage" style="display: block; margin-bottom: 5px;">Kichik Yosh</label>
                 <input type="number" name="lowage" value="{{ game.lowage }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
 
             <div style="flex: 1; margin-bottom: 20px;">
-                <label for="upage" style="display: block; margin-bottom: 5px;">Upper Age</label>
+                <label for="upage" style="display: block; margin-bottom: 5px;">Katta Yosh</label>
                 <input type="number" name="upage" value="{{ game.upage }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
         </div>
 
         <div style="display: flex; gap: 20px;">
             <div style="flex: 1; margin-bottom: 20px;">
-                <label for="lowplayernum" style="display: block; margin-bottom: 5px;">Minimum Number of Players</label>
+                <label for="lowplayernum" style="display: block; margin-bottom: 5px;">Kichik Yoshi</label>
                 <input type="number" name="lowplayernum" value="{{ game.lowplayernum }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
 
             <div style="flex: 1; margin-bottom: 20px;">
-                <label for="upplayernum" style="display: block; margin-bottom: 5px;">Maximum Number of Players</label>
+                <label for="upplayernum" style="display: block; margin-bottom: 5px;">Katta Yoshi</label>
                 <input type="number" name="upplayernum" value="{{ game.upplayernum }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
         </div>
@@ -67,12 +67,12 @@
 
         <div style="display: flex; gap: 20px;">
             <div style="flex: 1; margin-bottom: 20px;">
-                <label for="lowtime" style="display: block; margin-bottom: 5px;">Minimum time (minutes)</label>
+                <label for="lowtime" style="display: block; margin-bottom: 5px;">kam mumkin bo'lgan davomiylik (daqiqa)</label>
                 <input type="number" name="lowtime" value="{{ game.lowtime }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
 
             <div style="flex: 1; margin-bottom: 20px;">
-                <label for="uptime" style="display: block; margin-bottom: 5px;">Maximum time (minutes)</label>
+                <label for="uptime" style="display: block; margin-bottom: 5px;">kop mumkin bo'lgan davomiylik (daqiqa)</label>
                 <input type="number" name="uptime" value="{{ game.uptime }}" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
             </div>
         </div>
@@ -91,62 +91,62 @@
             </select>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <!-- <div style="margin-bottom: 20px;">
             <label for="type" style="display: block; margin-bottom: 5px;">Type</label>
             <select name="type" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                 {% for type in types %}
                     <option value="{{ type.id }}" {% if type.id == game.type.id %}selected{% endif %}>{{ type.name }}</option>
                 {% endfor %}
             </select>
-        </div>
+        </div> -->
 
         <div style="margin-bottom: 20px;">
-            <label for="rules" style="display: block; margin-bottom: 5px;">Rules</label>
+            <label for="rules" style="display: block; margin-bottom: 5px;">Qoidasi</label>
             <textarea name="rules" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.rules }}</textarea>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="goal" style="display: block; margin-bottom: 5px;">Goal</label>
+            <label for="goal" style="display: block; margin-bottom: 5px;">Maqsadi</label>
             <textarea name="goal" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.goal }}</textarea>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="target" style="display: block; margin-bottom: 5px;">Target</label>
+            <label for="target" style="display: block; margin-bottom: 5px;">Vazifalari</label>
             <textarea name="target" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.target }}</textarea>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="outcome" style="display: block; margin-bottom: 5px;">Outcome</label>
+            <label for="outcome" style="display: block; margin-bottom: 5px;">Kompetensiyalar</label>
             <textarea name="outcome" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.outcome }}</textarea>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="content" style="display: block; margin-bottom: 5px;">Content</label>
+            <label for="content" style="display: block; margin-bottom: 5px;">Materiallar tarkibi</label>
             <textarea name="content" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">{{ game.content }}</textarea>
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="pic" style="display: block; margin-bottom: 5px;">Picture</label>
+            <label for="pic" style="display: block; margin-bottom: 5px;">Surat</label>
             <input type="file" name="pic" style="width: 100%; padding: 10px;">
             <br><br>
             <img src="{{ game.pic.url }}" alt="" width="200" height="200" style="border: 1px solid #ccc; margin-top: 10px;">
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label for="file" style="display: block; margin-bottom: 5px;">File</label>
+            <label for="file" style="display: block; margin-bottom: 5px;">Manba</label>
             <input type="file" name="file" style="width: 100%; padding: 10px;">
             <br><br>
-            <p>Download: <a href="{{ game.file.url }}" download style="color: #007bff;">Game</a></p>
+            <p>Yuklab Olish: <a href="{{ game.file.url }}" download style="color: #007bff;">O'yin</a></p>
         </div>
 
         <button type="submit" style="display: block; padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
-            Save
+            Saqlash
         </button>
     </form>
 
-    <form action="{% url 'delete_game' game.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this game?');" style="margin-top: 20px;">
+    <form action="{% url 'delete_game' game.id %}" method="POST" onsubmit="return confirm(`Siz ushbu o'yinni o'chirishni xohlashingizga ishonchingiz komilmi?`);" style="margin-top: 20px;">
         {% csrf_token %}
-        <input type="submit" value="DELETE" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+        <input type="submit" value="O'chirib Yuborish" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
     </form>
 
 </div>

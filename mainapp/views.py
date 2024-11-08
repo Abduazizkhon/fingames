@@ -13,10 +13,10 @@ def navigation(active):
         def wrapper(request):
             contact = Contact.objects.latest('id')
             navbar = [
-                {'active': '', 'href': "main", 'text': 'Home'},
-                {'active': '', 'href': "game_list", 'text': 'Games'},
-                {'active': '', 'href': "resources", 'text': 'Resources'},
-                {'active': '', 'href': "about", 'text': 'About'},
+                {'active': '', 'href': "main", 'text': 'Bosh Sahifa'},
+                {'active': '', 'href': "game_list", 'text': "O'yinlar"},
+                {'active': '', 'href': "resources", 'text': "Resurslar"},
+                {'active': '', 'href': "about", 'text': "Biz Haqimizda"},
             ]
             for elem in navbar:
                 if elem['href'] == active:
@@ -134,17 +134,16 @@ def download_game(request, game_id):
         response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
         return response
 
-
 def resources(request):
     search = request.GET.get('search')
     contact = Contact.objects.latest('id')
 
     navbar = [
-        {'active': '', 'href': "main", 'text': 'Home'},
-        {'active': '', 'href': "game_list", 'text': 'Games'},
-        {'active': 'active', 'href': "resources", 'text': 'Resources'},
-        {'active': '', 'href': "about", 'text': 'About'},
-    ]
+                {'active': '', 'href': "main", 'text': 'Bosh Sahifa'},
+                {'active': '', 'href': "game_list", 'text': "O'yinlar"},
+                {'active': 'active', 'href': "resources", 'text': "Resurslar"},
+                {'active': '', 'href': "about", 'text': "Biz Haqimizda"},
+            ]
     if search is None:
         resources = AdditionalResources.objects.all().order_by('-id')
         return render(request, 'mainapp/resources.html', {'resources': resources, 'contact': contact, 'navbar': navbar})
@@ -156,11 +155,11 @@ def about(request):
     about = ProjectDescription.objects.latest('id')
     contact = Contact.objects.latest('id')
     navbar = [
-        {'active': '', 'href': "main", 'text': 'Home'},
-        {'active': '', 'href': "game_list", 'text': 'Games'},
-        {'active': '', 'href': "resources", 'text': 'Resources'},
-        {'active': 'active', 'href': "about", 'text': 'About'},
-    ]
+                {'active': '', 'href': "main", 'text': 'Bosh Sahifa'},
+                {'active': '', 'href': "game_list", 'text': "O'yinlar"},
+                {'active': '', 'href': "resources", 'text': "Resurslar"},
+                {'active': 'active', 'href': "about", 'text': "Biz Haqimizda"},
+            ]
 
     return render(request, 'mainapp/about.html', {'about': about, 'contact': contact, 'navbar': navbar})
 
