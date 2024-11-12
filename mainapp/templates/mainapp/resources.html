@@ -12,7 +12,7 @@
                style="width: 300px; padding: 10px 15px; border: 1px solid #ccc; border-radius: 25px; font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <input type="submit" value="Qidirish" 
                style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <a href="{% url 'resources' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Qayta Tiklash</a>
+        <a href="{% url 'resources' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Qayta tiklash</a>
     </form>
     <!-- <ul>
         {% for resource in resources %}
@@ -29,7 +29,7 @@
             <div class="courses_cards_item">
                 <h3 class="courses_item_title">{{ item.title }}</h3>
                 <p class="courses_item_desc">{{ item.desc }}</p>
-                <a href="{{ resource.file.url }}" download class="courses_item_btn">Yuklab Olish</a>
+                <a href="{{ resource.file.url }}" download class="courses_item_btn">Yuklab olish</a>
             </div>
         {% endfor %}
     </div>

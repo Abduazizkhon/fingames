@@ -13,10 +13,10 @@ def navigation(active):
         def wrapper(request):
             contact = Contact.objects.latest('id')
             navbar = [
-                {'active': '', 'href': "main", 'text': 'Bosh Sahifa'},
+                {'active': '', 'href': "main", 'text': 'Bosh sahifa'},
                 {'active': '', 'href': "game_list", 'text': "O'yinlar"},
                 {'active': '', 'href': "resources", 'text': "Resurslar"},
-                {'active': '', 'href': "about", 'text': "Biz Haqimizda"},
+                {'active': '', 'href': "about", 'text': "Biz haqimizda"},
             ]
             for elem in navbar:
                 if elem['href'] == active:
@@ -139,10 +139,10 @@ def resources(request):
     contact = Contact.objects.latest('id')
 
     navbar = [
-                {'active': '', 'href': "main", 'text': 'Bosh Sahifa'},
+                {'active': '', 'href': "main", 'text': 'Bosh sahifa'},
                 {'active': '', 'href': "game_list", 'text': "O'yinlar"},
                 {'active': 'active', 'href': "resources", 'text': "Resurslar"},
-                {'active': '', 'href': "about", 'text': "Biz Haqimizda"},
+                {'active': '', 'href': "about", 'text': "Biz haqimizda"},
             ]
     if search is None:
         resources = AdditionalResources.objects.all().order_by('-id')
@@ -155,10 +155,10 @@ def about(request):
     about = ProjectDescription.objects.latest('id')
     contact = Contact.objects.latest('id')
     navbar = [
-                {'active': '', 'href': "main", 'text': 'Bosh Sahifa'},
+                {'active': '', 'href': "main", 'text': 'Bosh sahifa'},
                 {'active': '', 'href': "game_list", 'text': "O'yinlar"},
                 {'active': '', 'href': "resources", 'text': "Resurslar"},
-                {'active': 'active', 'href': "about", 'text': "Biz Haqimizda"},
+                {'active': 'active', 'href': "about", 'text': "Biz haqimizda"},
             ]
 
     return render(request, 'mainapp/about.html', {'about': about, 'contact': contact, 'navbar': navbar})

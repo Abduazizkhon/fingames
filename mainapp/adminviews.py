@@ -15,9 +15,9 @@ def navigation(active):
                 {'active': '', 'href': "admingames", 'text': "O'yinlar"},
                 {'active': '', 'href': "admintopic", 'text': 'Mavzular'},
                 {'active': '', 'href': "adminfeedback", 'text': 'Tavsiyalar'}, 
-                {'active': '', 'href': "adminprojectdescription", 'text': 'Loyiha Tasviri'},   
+                {'active': '', 'href': "adminprojectdescription", 'text': 'Loyiha tasviri'},   
                 {'active': '', 'href': "adminresources", 'text': 'Resurslar'},
-                {'active': '', 'href': "adminintro", 'text': 'Kirish Qismi'}, 
+                {'active': '', 'href': "adminintro", 'text': 'Kirish qismi'}, 
                 {'active': '', 'href': "admincontact", 'text': "Bog'lanish"},
             ]
 

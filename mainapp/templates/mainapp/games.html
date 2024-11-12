@@ -12,7 +12,7 @@
                style="width: 300px; padding: 10px 15px; border: 1px solid #ccc; border-radius: 25px; font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 5px;">
         <input type="submit" value="Qidirish" 
                style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Qayta Tiklash</a>
+        <a href="{% url 'game_list' %}" style="padding: 10px 20px; margin-left: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 25px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Qayta tiklash</a>
         {% if used_filters %}
         <div id="filters" style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; margin-top: 20px;">
     {% else %}
@@ -35,13 +35,13 @@
         
         <input type="number" name="time" value="{{filters.time}}" style="padding: 5px; border-radius: 8px; border: 1px solid #007bff;">
     
-        <label for="" style="color: #007bff;">O'yinchilar Soni</label>
+        <label for="" style="color: #007bff;">O'yinchilar soni</label>
         <input type="number" name="playernum" value="{{filters.playernum}}" style="padding: 5px; border-radius: 8px; border: 1px solid #007bff;">
     
         <label for="" style="color: #007bff;">Yoshi</label>
         <input type="number" name="age" value="{{filters.age}}" style="padding: 5px; border-radius: 8px; border: 1px solid #007bff;">
         <select name="topic" id="" style="padding: 5px; border-radius: 8px; background-color: #007bff; color: white; border: none;">
-            <option value="0">Mavzuni Tanlash</option>
+            <option value="0">Mavzuni tanlash</option>
             {% for topic in topics %}
                 {% if topic.id == filters.topic_game %}
                     <option value="{{topic.id}}" selected>{{topic.name}}</option>
@@ -83,7 +83,7 @@
                     <li class="item_auth">Muallif: {{item.author}}</li>
                     <li class="item_playernum">Ishtirokchilar soni: {{ item.lowplayernum }} - {{ item.upplayernum }}</li>
                     <li class="item_playerage">Ishtirokchilar yoshi: {{item.lowage}} - {{item.upage}}</li>
-                    <li class="item_duration">Ishtirokchilar yoshi: {{ item.lowtime }} - {{ item.uptime }} minutes</li>
+                    <li class="item_duration">O'yin davomiligi: {{ item.lowtime }} - {{ item.uptime }} daqiqa</li>
                 </ul>
                 <a href="{% url 'game_detail' item.id %}" class="courses_item_btn">TANLASH</a>
             </div>

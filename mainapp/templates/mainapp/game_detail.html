@@ -54,13 +54,13 @@
          <p><strong>Materiallar tarkibi: </strong>{{game.content}}</p>
     
         <!-- Download Button -->
-        <p>Yuklab Olish: <a href="{% url 'download_game' game.id %}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">O'yin Manbasi</a></p>
+        <p>Yuklab olish: <a href="{% url 'download_game' game.id %}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">O'yin manbasi</a></p>
 
         <!-- Download count -->
         <p><strong>Statistika: </strong> {{ game.download_count }} marta yuklab olingan</p>
     
         <!-- Back to Games Button -->
-        <a href="{% url 'game_list' %}" style="color: #007bff; text-decoration: none; border: 1px solid #007bff; padding: 10px 15px; border-radius: 5px; display: inline-block;">O'yinlarga Qaytish</a>
+        <a href="{% url 'game_list' %}" style="color: #007bff; text-decoration: none; border: 1px solid #007bff; padding: 10px 15px; border-radius: 5px; display: inline-block;">O'yinlarga qaytish</a>
     </div>
     
 {% endblock main %}

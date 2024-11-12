@@ -50,13 +50,13 @@
                         <li class="item_auth">Muallif: {{item.author}}</li>
                         <li class="item_playernum">Ishtirokchilar soni: {{ item.lowplayernum }} - {{ item.upplayernum }}</li>
                         <li class="item_playerage">Ishtirokchilar yoshi: {{item.lowage}} - {{item.upage}}</li>
-                        <li class="item_duration">Ishtirokchilar yoshi: {{ item.lowtime }} - {{ item.uptime }} minutes</li>
+                        <li class="item_duration">O'yin davomiligi: {{ item.lowtime }} - {{ item.uptime }} daqiqa</li>
                     </ul>
                     <a href="{% url 'game_detail' item.id %}" class="courses_item_btn">TANLASH</a>
                 </div>
             {% endfor %}
         </div>
-        <a href="{% url 'game_list' %}" class="courses_btn">Barchasini Ko'rish</a>
+        <a href="{% url 'game_list' %}" class="courses_btn">Barchasini ko'rish</a>
 
     </div>
     <!-- resources -->
@@ -76,11 +76,11 @@
                     <div class="courses_cards_item">
                         <h3 class="courses_item_title">{{ item.title }}</h3>
                         <p class="courses_item_desc">{{ item.desc }}</p>
-                        <a href="{{ resource.file.url }}" download class="courses_item_btn">Yuklab Olish</a>
+                        <a href="{{ resource.file.url }}" download class="courses_item_btn">Yuklab olish</a>
                     </div>
                 {% endfor %}
             </div>
-            <a href="{% url 'resources' %}" class="courses_btn">Barchasini Ko'rish</a>
+            <a href="{% url 'resources' %}" class="courses_btn">Barchasini ko'rish</a>
         
     </div>
 </div>
@@ -91,7 +91,7 @@
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="section-title text-center position-relative mb-5">
-            <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">MOLIYA HAQIDA</h6>
+            <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">BIZ HAQIMIZDA</h6>
             <h1 class="display-4">{{about.title}}</h1>
             <p>{{about.content}}</p>
             
