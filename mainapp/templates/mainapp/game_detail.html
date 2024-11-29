@@ -45,13 +45,13 @@
         <p><strong>Maqsadi: </strong> {{ game.goal }}</p>
     
         <!-- Target Audience -->
-        <p><strong>Vazifalari: </strong> {{ game.target }}</p>
+        <p><strong>Vazifalari: </strong> <br>{{ game.target|linebreaksbr }}</p>
     
         <!-- Outcome -->
-        <p><strong>Kompetensiyalar: </strong> {{ game.outcome }}</p>
+        <p><strong>Kompetensiyalar: </strong> <br>{{ game.outcome|linebreaksbr }}</p>
 
         <!-- Content -->
-         <p><strong>Materiallar tarkibi: </strong>{{game.content}}</p>
+         <p><strong>Materiallar tarkibi: </strong> <br>{{game.content|linebreaksbr }}</p>
     
         <!-- Download Button -->
         <p>Yuklab olish: <a href="{% url 'download_game' game.id %}" download style="color: white; background-color: #007bff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">O'yin manbasi</a></p>
