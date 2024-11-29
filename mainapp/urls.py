@@ -8,6 +8,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path("login/", adminviews.loginview, name = "login"),
     path("main/", views.mainpage, name = "main"),
+    path("", views.mainpage),
     path('admin/', adminviews.adminpannel, name="admin"),
     path('admin/games/', adminviews.admingames, name="admingames"),
     path('admin/topic/', adminviews.admintopic, name="admintopic"),

@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-=+bq-6xqd3pnvg85ntu#ox*3nazsk%3xh$k+y2a6rk=y76s%ko
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-# CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://moliyaviy.uz"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
